@@ -22,12 +22,19 @@
         <argument
             android:name="selectedSourceId"
             app:argType="string" />
+        <action
+            android:id="@+id/action_newsFragment_to_newsDetailFragment"
+            app:destination="@id/newsDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/newsDetailFragment"
         android:name="com.norm.news.ui.news.NewsDetailFragment"
         android:label="News Details"
-        tools:layout="@layout/fragment_news_detail" />
+        tools:layout="@layout/fragment_news_detail">
+        <argument
+            android:name="selectedArticle"
+            app:argType="com.norm.news.network.model.Article"/>
+    </fragment>
     <fragment
         android:id="@+id/dest_about"
         android:name="com.norm.news.ui.about.AboutFragment"

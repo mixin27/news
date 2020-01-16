@@ -1,5 +1,6 @@
 package com.norm.news.network
 
+import com.norm.news.network.model.NewsResponse
 import com.norm.news.network.model.NewsSourceResponse
 import com.norm.news.utils.API_KEY
 import kotlinx.coroutines.Deferred
@@ -14,4 +15,10 @@ interface NewsApi {
     fun getSourcesAsync(
         @Query("apiKey") apiKey: String = API_KEY
     ): Deferred<NewsSourceResponse>
+
+    @GET("top-headlines")
+    fun getTopHeadLineArticlesAsync(
+        @Query("sources") source: String = "bbc-news",
+        @Query("apiKey") apiKey: String = API_KEY
+    ): Deferred<NewsResponse>
 }

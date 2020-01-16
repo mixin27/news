@@ -79,8 +79,10 @@ class NewsSourceViewModel(
                 _status.value = ApiStatus.SUCCESS
                 _response.value = listResult
                 _sources.value = listResult.sources
+                Timber.i("Success: ${_response.value}")
             } catch (e: Exception) {
                 _status.value = ApiStatus.ERROR
+                Timber.i("Failed: ${_response.value}")
             }
         }
     }
