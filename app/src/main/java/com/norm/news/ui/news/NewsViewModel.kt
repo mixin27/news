@@ -50,10 +50,7 @@ class NewsViewModel(
 
     private fun getArticlesFromNetwork() {
         coroutineScope.launch {
-            val newsResponse = NewsApiService.retrofitService.getTopHeadLineArticlesAsync(
-                sourceId,
-                API_KEY
-            )
+            val newsResponse = NewsApiService.retrofitService.getTopHeadLineArticlesAsync(sourceId)
             try {
                 _status.value = ApiStatus.LOADING
                 val result = newsResponse.await()

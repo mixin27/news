@@ -24,7 +24,7 @@ class NewsSourceRepositoryImpl(
     override suspend fun refreshNewsSource() {
         withContext(Dispatchers.IO) {
             Timber.d("Refresh news source is called")
-            val newsSources = NewsApiService.retrofitService.getSourcesAsync(API_KEY).await()
+            val newsSources = NewsApiService.retrofitService.getSourcesAsync().await()
             database.newsSourceDao.insertAll(newsSources.asDatabaseModel())
         }
     }
