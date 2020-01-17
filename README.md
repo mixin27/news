@@ -1,9 +1,9 @@
 # News
 News
 
- Using `api` from https://newsapi.org/
+ Using `api` from [newsapi.org](https://newsapi.org/)
  
- Using most of codes are referenced from https://codelabs.developers.google.com/android-kotlin-fundamentals/
+ Using most of codes are referenced from [Android Kotlin Fundamentals Code Labs](https://codelabs.developers.google.com/android-kotlin-fundamentals/)
 
 # Features
 - News source lists
@@ -11,15 +11,20 @@ News
 - News details
 
 # Libraries
-- Material UI
-- Navigation
-- Lifecycle
-- Room
-- Coroutines
-- Retrofit
-- Moshi
-- Glide
-- Timber
+- [Material UI]() for material user interface
+- [Navigation]() for navigation
+- [Lifecycle]() for `ViewModel`, `LiveData` and other lifecycle awareness
+- [Room]() for local cache (database)
+- [Coroutines]() for job
+- [Retrofit]() for networking
+- [Moshi]() for json
+- [Glide]() for image loading
+- [Timber]() for logging
+
+# TODO
+- [x] News source lists
+- [x] News lists for each source
+- [ ] News Detail
 
 # License
 ```
