@@ -70,6 +70,10 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
 
+    // OkHttp
+    implementation 'com.squareup.okhttp3:okhttp:4.3.1'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.3.1'
+
     // Moshi
     implementation "com.squareup.moshi:moshi:$moshiVersion"
     implementation "com.squareup.moshi:moshi-kotlin:$moshiVersion"

@@ -10,6 +10,8 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 /**
  * Created by KZYT on 16/01/2020.
  */
+
+
 /**
  * Build the Moshi object that Retrofit will be using, making sure to add the Kotlin adapter for
  * full Kotlin compatibility.
