@@ -8,6 +8,7 @@ import kotlinx.android.parcel.Parcelize
  */
 data class NewsResponse(
     val status: String,
+    val totalResults: Long = 0,
     val articles: List<Article>
 )
 

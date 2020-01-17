@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.norm.news.databinding.ListItemSourceBinding
-import com.norm.news.network.model.NewsSource
+import com.norm.news.domain.NewsSource
 
 /**
  * Created by KZYT on 16/01/2020.

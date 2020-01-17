@@ -11,7 +11,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.norm.news.R
-import com.norm.news.data.local.NewsDatabase
 import com.norm.news.databinding.FragmentNewsSourceBinding
 
 /**
@@ -34,8 +33,7 @@ class NewsSourceFragment : Fragment() {
         binding.lifecycleOwner = this
 
         val application = requireNotNull(this.activity).application
-        val dataSource = NewsDatabase.getInstance(application).newsSourceDao
-        val viewModelFactory = NewsSourceViewModelFactory(dataSource, application)
+        val viewModelFactory = NewsSourceViewModelFactory(application)
         val newsSourceViewModel =
             ViewModelProviders.of(this, viewModelFactory).get(NewsSourceViewModel::class.java)
         binding.newsSourceViewModel = newsSourceViewModel

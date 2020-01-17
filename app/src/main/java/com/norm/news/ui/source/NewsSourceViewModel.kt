@@ -4,31 +4,26 @@ import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.norm.news.data.local.dao.NewsSourceDao
+import com.norm.news.data.local.NewsDatabase
+import com.norm.news.domain.NewsSource
 import com.norm.news.network.ApiStatus
-import com.norm.news.network.NewsApiService
-import com.norm.news.network.model.NewsSource
-import com.norm.news.network.model.NewsSourceResponse
-import com.norm.news.utils.API_KEY
+import com.norm.news.repository.impl.NewsSourceRepositoryImpl
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import timber.log.Timber
-import java.lang.Exception
+import java.io.IOException
 
 /**
  * Created by KZYT on 15/01/2020.
  */
 class NewsSourceViewModel(
-    application: Application,
-    newsSourceDao: NewsSourceDao
+    application: Application
 ) : ViewModel() {
 
-    /**
-     * Hold a reference to NewsDatabase via NewsSourceDao.
-     */
-    val database = newsSourceDao
+    private val newsSourceRepository =
+        NewsSourceRepositoryImpl(NewsDatabase.getInstance(application))
 
     /**
      * viewModelJob allows us to cancel all coroutines started by this ViewModel.
@@ -47,20 +42,30 @@ class NewsSourceViewModel(
      */
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
-    // Data from database
-    // val sources = database.getAllSources()
-
-    private val _response = MutableLiveData<NewsSourceResponse>()
-    val response: LiveData<NewsSourceResponse>
-        get() = _response
-
-    private val _sources = MutableLiveData<List<NewsSource>>()
-    val sources: LiveData<List<NewsSource>>
-        get() = _sources
+    /**
+     * News source lists to be displayed on the screen.
+     */
+    val sources = newsSourceRepository.sources
 
     private val _status = MutableLiveData<ApiStatus>()
     val status: LiveData<ApiStatus>
         get() = _status
+
+    /**
+     * Event triggered for network error. This is private to avoid exposing a
+     * way to set this value to observers.
+     */
+    private var _eventNetworkError = MutableLiveData<Boolean>(false)
+    val eventNetworkError: LiveData<Boolean>
+        get() = _eventNetworkError
+
+    /**
+     * Flag to display the error message. This is private to avoid exposing a
+     * way to set this value to observers.
+     */
+    private var _isNetworkErrorShown = MutableLiveData<Boolean>(false)
+    val isNetworkErrorShown: LiveData<Boolean>
+        get() = _isNetworkErrorShown
 
     private val _navigateToSelectedItem = MutableLiveData<NewsSource>()
     val navigateToSelectedItem: LiveData<NewsSource>
@@ -72,17 +77,29 @@ class NewsSourceViewModel(
 
     private fun getNewsSources() {
         uiScope.launch {
-            val allSources = NewsApiService.retrofitService.getSourcesAsync(API_KEY)
+//            val allSources = NewsApiService.retrofitService.getSourcesAsync(API_KEY)
+//            try {
+//                _status.value = ApiStatus.LOADING
+//                val listResult = allSources.await()
+//                _status.value = ApiStatus.SUCCESS
+//                _response.value = listResult
+//                _sources.value = listResult.sources
+//            } catch (e: Exception) {
+//                _status.value = ApiStatus.ERROR
+//            }
             try {
                 _status.value = ApiStatus.LOADING
-                val listResult = allSources.await()
+                newsSourceRepository.refreshNewsSource()
                 _status.value = ApiStatus.SUCCESS
-                _response.value = listResult
-                _sources.value = listResult.sources
-                Timber.i("Success: ${_response.value}")
-            } catch (e: Exception) {
-                _status.value = ApiStatus.ERROR
-                Timber.i("Failed: ${_response.value}")
+                _eventNetworkError.value = false
+                _isNetworkErrorShown.value = false
+            } catch (e: IOException) {
+                if (sources.value!!.isEmpty()) {
+                    _status.value = ApiStatus.ERROR
+                    _eventNetworkError.value = true
+                } else {
+                    _status.value = ApiStatus.SUCCESS
+                }
             }
         }
     }

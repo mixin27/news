@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 
 import com.norm.news.R
 import com.norm.news.databinding.FragmentNewsBinding
+import timber.log.Timber
 
 /**
  * A simple [Fragment] subclass.
@@ -48,6 +49,13 @@ class NewsFragment : Fragment() {
                     NewsFragmentDirections.actionNewsFragmentToNewsDetailFragment(it)
                 )
                 newsViewModel.displayNewsSourceDetailsComplete()
+            }
+        })
+
+        newsViewModel.response.observe(this, Observer {
+            if (it != null) {
+                Timber.i("Sync Status: ${it.status}")
+                Timber.i("Item count = ${it.totalResults}")
             }
         })
 

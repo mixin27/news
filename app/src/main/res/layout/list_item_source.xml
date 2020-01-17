@@ -6,7 +6,7 @@
     <data>
         <variable
             name="source"
-            type="com.norm.news.network.model.NewsSource" />
+            type="com.norm.news.domain.NewsSource" />
     </data>
 
     <com.google.android.material.card.MaterialCardView

@@ -61,11 +61,8 @@ class NewsViewModel(
 
                 _response.value = result
                 _articles.value = result.articles
-
-                Timber.i("Success: ${_articles.value}")
             } catch (e: Exception) {
                 _status.value = ApiStatus.ERROR
-
                 Timber.i("Failed: ${_response.value}")
             }
         }
