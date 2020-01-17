@@ -55,17 +55,17 @@ class NewsSourceViewModel(
      * Event triggered for network error. This is private to avoid exposing a
      * way to set this value to observers.
      */
-    private var _eventNetworkError = MutableLiveData<Boolean>(false)
-    val eventNetworkError: LiveData<Boolean>
-        get() = _eventNetworkError
+//    private var _eventNetworkError = MutableLiveData<Boolean>(false)
+//    val eventNetworkError: LiveData<Boolean>
+//        get() = _eventNetworkError
 
     /**
      * Flag to display the error message. This is private to avoid exposing a
      * way to set this value to observers.
      */
-    private var _isNetworkErrorShown = MutableLiveData<Boolean>(false)
-    val isNetworkErrorShown: LiveData<Boolean>
-        get() = _isNetworkErrorShown
+//    private var _isNetworkErrorShown = MutableLiveData<Boolean>(false)
+//    val isNetworkErrorShown: LiveData<Boolean>
+//        get() = _isNetworkErrorShown
 
     private val _navigateToSelectedItem = MutableLiveData<NewsSource>()
     val navigateToSelectedItem: LiveData<NewsSource>
@@ -91,12 +91,12 @@ class NewsSourceViewModel(
                 _status.value = ApiStatus.LOADING
                 newsSourceRepository.refreshNewsSource()
                 _status.value = ApiStatus.SUCCESS
-                _eventNetworkError.value = false
-                _isNetworkErrorShown.value = false
+                // _eventNetworkError.value = false
+                // _isNetworkErrorShown.value = false
             } catch (e: IOException) {
                 if (sources.value!!.isEmpty()) {
                     _status.value = ApiStatus.ERROR
-                    _eventNetworkError.value = true
+                    // _eventNetworkError.value = true
                 } else {
                     _status.value = ApiStatus.SUCCESS
                 }

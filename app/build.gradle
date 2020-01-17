@@ -16,6 +16,7 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -63,7 +64,7 @@ dependencies {
     implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$version_retrofit_coroutines_adapter"
 
     // WorkManager
-    implementation "android.arch.work:work-runtime-ktx:$workVersion"
+    // implementation "android.arch.work:work-runtime-ktx:$workVersion"
 
     // Retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
@@ -80,6 +81,7 @@ dependencies {
     implementation "com.jakewharton.threetenabp:threetenabp:$threetenabpVersion"
 
     implementation 'com.jakewharton.timber:timber:4.7.1'
+    implementation 'com.android.support:multidex:1.0.3'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

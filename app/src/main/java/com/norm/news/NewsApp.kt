@@ -1,6 +1,8 @@
 package com.norm.news
 
 import android.app.Application
+import android.content.Context
+import androidx.multidex.MultiDex
 import com.jakewharton.threetenabp.AndroidThreeTen
 import timber.log.Timber
 
@@ -16,5 +18,10 @@ class NewsApp: Application() {
 
         // Timber
         Timber.plant(Timber.DebugTree())
+    }
+
+    override fun attachBaseContext(base: Context?) {
+        super.attachBaseContext(base)
+        MultiDex.install(this)
     }
 }

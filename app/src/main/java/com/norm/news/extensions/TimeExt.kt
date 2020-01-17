@@ -2,10 +2,20 @@
 
 package com.norm.news.extensions
 
+import org.threeten.bp.ZonedDateTime
 import java.util.*
+
+fun String.toZoneDateTime(): ZonedDateTime {
+    return ZonedDateTime.parse(this)
+}
+
+fun ZonedDateTime.toMilliSecond(): Long {
+    return this.toEpochSecond()
+}
 
 /**
  * Code from [https://github.com/juanchosaravia/KedditBySteps/blob/master/app/src/main/java/com/droidcba/kedditbysteps/commons/extensions/TimeExt.kt]
+ * Modified some text to be shorter
  */
 fun Long.getFriendlyTime(): String {
     val dateTime = Date(this * 1000)
@@ -27,66 +37,66 @@ fun Long.getFriendlyTime(): String {
 
     if (years > 0) {
         if (years == 1) {
-            sb.append("a year")
+            sb.append("1 yr")
         } else {
-            sb.append("$years years")
+            sb.append("$years yrs")
         }
         if (years <= 6 && months > 0) {
             if (months == 1) {
-                sb.append(" and a month")
+                sb.append(" 1 mth")
             } else {
-                sb.append(" and $months months")
+                sb.append(" $months months")
             }
         }
     } else if (months > 0) {
         if (months == 1) {
-            sb.append("a month")
+            sb.append("1 mth")
         } else {
-            sb.append("$months months")
+            sb.append("$months mths")
         }
         if (months <= 6 && days > 0) {
             if (days == 1) {
-                sb.append(" and a day")
+                sb.append(" 1 day")
             } else {
-                sb.append(" and $days days")
+                sb.append(" $days days")
             }
         }
     } else if (days > 0) {
         if (days == 1) {
-            sb.append("a day")
+            sb.append("1 day")
         } else {
             sb.append("$days days")
         }
         if (days <= 3 && hrs > 0) {
             if (hrs == 1) {
-                sb.append(" and an hour")
+                sb.append(" 1 hr")
             } else {
-                sb.append(" and $hrs hours")
+                sb.append(" $hrs hrs")
             }
         }
     } else if (hrs > 0) {
         if (hrs == 1) {
-            sb.append("an hour")
+            sb.append("1 hr")
         } else {
-            sb.append("$hrs hours")
+            sb.append("$hrs hrs")
         }
         if (min > 1) {
-            sb.append(" and $min minutes")
+            sb.append(" $min mins")
         }
     } else if (min > 0) {
         if (min == 1) {
-            sb.append("a minute")
+            sb.append("1 min")
         } else {
-            sb.append("$min minutes")
+            sb.append("$min mins")
         }
         if (sec > 1) {
-            sb.append(" and $sec seconds")
+            sb.append(" $sec secs")
         }
     } else {
         if (sec <= 1) {
-            sb.append("about a second")
+            sb.append("1 sec")
         } else {
-            sb.append("about $sec seconds")
+            sb.append("$sec secs")
         }
     }
 
