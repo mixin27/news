@@ -18,13 +18,13 @@ data class NewsResponse(
 
 @Parcelize
 data class Article(
-    val author: String,
-    val title: String,
-    val description: String,
+    val author: String? = "",
+    val title: String? = "",
+    val description: String? = "",
     val url: String,
-    val urlToImage: String,
+    val urlToImage: String? = "",
     val publishedAt: String,
-    val content: String
+    val content: String? = ""
 ) : Parcelable {
     val getFriendlyDate
         get() = publishedAt.toZoneDateTime().toMilliSecond().getFriendlyTime()

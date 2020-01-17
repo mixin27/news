@@ -1,9 +1,7 @@
 # News
-News
-
  Using `api` from [newsapi.org](https://newsapi.org/)
  
- Using most of codes are referenced from [Android Kotlin Fundamentals Code Labs](https://codelabs.developers.google.com/android-kotlin-fundamentals/)
+ Most of codes are referenced from [Android Kotlin Fundamentals Code Labs](https://codelabs.developers.google.com/android-kotlin-fundamentals/)
 
 # Features
 - News source lists
@@ -21,10 +19,11 @@ News
 - [Glide]() for image loading
 - [Timber]() for logging
 
-# TODO
+# Todo
 - [x] News source lists
 - [x] News lists for each source
 - [ ] News Detail
+- [ ] Dagger implementation
 
 # License
 ```

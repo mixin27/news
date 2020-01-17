@@ -3,7 +3,10 @@ package com.norm.news.utils
 import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
+import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.norm.news.R
 import com.norm.news.network.ApiStatus
 
@@ -38,5 +41,19 @@ fun bindStatus(imageView: ImageView, status: ApiStatus?) {
             imageView.visibility = View.VISIBLE
             imageView.setImageResource(R.drawable.ic_connection_error)
         }
+    }
+}
+
+@BindingAdapter("imageUrl")
+fun bindImageFromUrl(imageView: ImageView, imgUrl: String?) {
+    imgUrl?.let {
+        val imgUri = imgUrl.toUri().buildUpon().scheme("https").build()
+        Glide.with(imageView.context)
+            .load(imgUri)
+            .apply(
+                RequestOptions()
+                    .placeholder(R.drawable.loading_animation)
+                    .error(R.drawable.ic_broken_image))
+            .into(imageView)
     }
 }
