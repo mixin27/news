@@ -18,6 +18,7 @@
 - [Moshi]() for json
 - [Glide]() for image loading
 - [Timber]() for logging
+- [WorkManager]() for schedule background work
 
 # Todo
 - [x] News source lists
