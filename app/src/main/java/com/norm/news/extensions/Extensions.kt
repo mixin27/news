@@ -1,3 +1,5 @@
+@file:JvmName("ExtensionUtils")
+
 package com.norm.news.extensions
 
 import android.view.LayoutInflater

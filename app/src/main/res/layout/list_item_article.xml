@@ -22,7 +22,7 @@
             <ImageView
                 android:id="@+id/iv_article"
                 android:layout_width="0dp"
-                android:layout_height="120dp"
+                android:layout_height="160dp"
                 android:scaleType="centerCrop"
                 app:imageUrl="@{article.urlToImage}"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -31,14 +31,13 @@
 
             <TextView
                 android:id="@+id/tv_title"
+                style="?attr/textAppearanceHeadline6"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:paddingTop="16dp"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
                 android:text="@{article.title}"
-                android:textColor="@color/secondaryTextColor"
-                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/iv_article"
@@ -46,6 +45,7 @@
 
             <TextView
                 android:id="@+id/tv_description"
+                style="@style/TextAppearance.Subtitle1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:paddingStart="16dp"
@@ -53,7 +53,6 @@
                 android:paddingEnd="16dp"
                 android:paddingBottom="16dp"
                 android:text="@{article.description}"
-                android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_title"
@@ -61,26 +60,26 @@
 
             <TextView
                 android:id="@+id/tv_author"
+                style="@style/TextAppearance.Author"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
                 android:paddingBottom="16dp"
                 android:text="@{article.author}"
-                android:textColor="@color/primaryLightColor"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_description"
                 tools:text="BBC News" />
 
             <TextView
                 android:id="@+id/tv_publish_at"
+                style="@style/TextAppearance.DateTime"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
                 android:paddingBottom="16dp"
                 android:text="@{article.publishedAt}"
-                android:textColor="@color/primaryLightColor"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_description"
                 tools:text="2020-01-16T07:03:53Z" />

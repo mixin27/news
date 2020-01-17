@@ -1,6 +1,7 @@
 package com.norm.news
 
 import android.app.Application
+import com.jakewharton.threetenabp.AndroidThreeTen
 import timber.log.Timber
 
 /**
@@ -9,6 +10,11 @@ import timber.log.Timber
 class NewsApp: Application() {
     override fun onCreate() {
         super.onCreate()
+
+        // ThreetenABP
+        AndroidThreeTen.init(this)
+
+        // Timber
         Timber.plant(Timber.DebugTree())
     }
 }
