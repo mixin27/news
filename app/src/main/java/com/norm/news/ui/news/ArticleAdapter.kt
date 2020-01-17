@@ -5,19 +5,22 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.norm.news.databinding.ListItemArticleBinding
+import com.norm.news.domain.NewsArticles
 import com.norm.news.network.model.Article
+import timber.log.Timber
 
 /**
  * Created by KZYT on 16/01/2020.
  */
 class ArticleAdapter(
     private val onClickListener: OnClickListener
-) : ListAdapter<Article, ArticleAdapter.ArticleViewHolder>(ArticleDiffCallback()) {
+) : ListAdapter<NewsArticles, ArticleAdapter.ArticleViewHolder>(ArticleDiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {
         return ArticleViewHolder.from(parent)
     }
 
     override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
+        Timber.i("Item size: $itemCount")
         val item = getItem(position)
         holder.itemView.setOnClickListener {
             onClickListener.onClick(item)
@@ -27,7 +30,7 @@ class ArticleAdapter(
 
     class ArticleViewHolder private constructor(private val binding: ListItemArticleBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: Article) {
+        fun bind(item: NewsArticles) {
             binding.article = item
             binding.executePendingBindings()
         }
@@ -46,7 +49,7 @@ class ArticleAdapter(
      * associated with the current item to the [onClick] function.
      * @param clickListener lambda that will be called with the current [Article]
      */
-    class OnClickListener(val clickListener: (article: Article) -> Unit) {
-        fun onClick(article: Article) = clickListener(article)
+    class OnClickListener(val clickListener: (article: NewsArticles) -> Unit) {
+        fun onClick(article: NewsArticles) = clickListener(article)
     }
 }

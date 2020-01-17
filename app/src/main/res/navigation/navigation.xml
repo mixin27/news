@@ -33,7 +33,7 @@
         tools:layout="@layout/fragment_news_detail">
         <argument
             android:name="selectedArticle"
-            app:argType="com.norm.news.network.model.Article"/>
+            app:argType="com.norm.news.domain.NewsArticles"/>
     </fragment>
     <fragment
         android:id="@+id/dest_about"

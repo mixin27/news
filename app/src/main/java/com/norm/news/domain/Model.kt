@@ -1,6 +1,10 @@
 package com.norm.news.domain
 
-import com.norm.news.extensions.smartTruncate
+import android.os.Parcelable
+import com.norm.news.extensions.getFriendlyTime
+import com.norm.news.extensions.toMilliSecond
+import com.norm.news.extensions.toZoneDateTime
+import kotlinx.android.parcel.Parcelize
 
 /**
  * Domain model: [NewsSource]
@@ -13,18 +17,14 @@ data class NewsSource(
     val category: String,
     val language: String,
     val country: String
-) {
-    /**
-     * Short description is used for displaying truncated descriptions in the UI
-     */
-    val shortDescription: String
-        get() = description.smartTruncate(200)
-}
+)
 
 /**
  * Domain model: [NewsArticles]
  */
+@Parcelize
 data class NewsArticles(
+    val id: String,
     val author: String,
     val title: String,
     val description: String,
@@ -32,4 +32,7 @@ data class NewsArticles(
     val urlToImage: String,
     val publishedAt: String,
     val content: String
-)
+): Parcelable {
+    val getFriendlyDate
+        get() = publishedAt.toZoneDateTime().toMilliSecond().getFriendlyTime()
+}

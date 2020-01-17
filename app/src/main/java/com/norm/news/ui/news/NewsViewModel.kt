@@ -4,44 +4,38 @@ import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.norm.news.database.NewsDatabase
+import com.norm.news.domain.NewsArticles
 import com.norm.news.network.ApiStatus
-import com.norm.news.network.NewsApiService
 import com.norm.news.network.model.Article
-import com.norm.news.network.model.NewsResponse
-import com.norm.news.utils.API_KEY
+import com.norm.news.repository.impl.NewsArticlesRepositoryImpl
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import timber.log.Timber
+import java.io.IOException
 
 /**
  * Created by KZYT on 16/01/2020.
  */
 class NewsViewModel(
     application: Application,
-    newsSourceId: String
+    sourceId: String
 ) : ViewModel() {
-
-    val sourceId = newsSourceId
+    val newsArticleRepository =
+        NewsArticlesRepositoryImpl(NewsDatabase.getInstance(application), sourceId)
 
     private var viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
-    private val _response = MutableLiveData<NewsResponse>()
-    val response: LiveData<NewsResponse>
-        get() = _response
+    val articles = newsArticleRepository.articles
 
     private val _status = MutableLiveData<ApiStatus>()
     val status: LiveData<ApiStatus>
         get() = _status
 
-    private val _articles = MutableLiveData<List<Article>>()
-    val articles: LiveData<List<Article>>
-        get() = _articles
-
-    private val _navigateToSelectedItem = MutableLiveData<Article>()
-    val navigateToSelectedItem: LiveData<Article>
+    private val _navigateToSelectedItem = MutableLiveData<NewsArticles>()
+    val navigateToSelectedItem: LiveData<NewsArticles>
         get() = _navigateToSelectedItem
 
     init {
@@ -50,17 +44,19 @@ class NewsViewModel(
 
     private fun getArticlesFromNetwork() {
         coroutineScope.launch {
-            val newsResponse = NewsApiService.retrofitService.getTopHeadLineArticlesAsync(sourceId)
             try {
                 _status.value = ApiStatus.LOADING
-                val result = newsResponse.await()
+                newsArticleRepository.refreshArticles()
                 _status.value = ApiStatus.SUCCESS
-
-                _response.value = result
-                _articles.value = result.articles
-            } catch (e: Exception) {
-                _status.value = ApiStatus.ERROR
-                Timber.i("Failed: ${_response.value}")
+                // _eventNetworkError.value = false
+                // _isNetworkErrorShown.value = false
+            } catch (e: IOException) {
+                if (articles.value!!.isEmpty()) {
+                    _status.value = ApiStatus.ERROR
+                    // _eventNetworkError.value = true
+                } else {
+                    _status.value = ApiStatus.SUCCESS
+                }
             }
         }
     }
@@ -74,7 +70,7 @@ class NewsViewModel(
      * When the property is clicked, set the [_navigateToSelectedItem] [MutableLiveData]
      * @param article The [Article] that was clicked on.
      */
-    fun displayNewsSourceDetails(article: Article) {
+    fun displayNewsSourceDetails(article: NewsArticles) {
         _navigateToSelectedItem.value = article
     }
 

@@ -52,13 +52,6 @@ class NewsFragment : Fragment() {
             }
         })
 
-        newsViewModel.response.observe(this, Observer {
-            if (it != null) {
-                Timber.i("Sync Status: ${it.status}")
-                Timber.i("Item count = ${it.totalResults}")
-            }
-        })
-
         return binding.root
     }
 

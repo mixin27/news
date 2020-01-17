@@ -4,15 +4,18 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.norm.news.database.dao.NewsArticleDao
 import com.norm.news.database.dao.NewsSourceDao
+import com.norm.news.database.entity.NewsArticleEntity
 import com.norm.news.database.entity.SourceEntity
 
 /**
  * Created by KZYT on 16/01/2020.
  */
-@Database(entities = [SourceEntity::class], version = 1, exportSchema = false)
+@Database(entities = [SourceEntity::class, NewsArticleEntity::class], version = 4, exportSchema = false)
 abstract class NewsDatabase : RoomDatabase() {
     abstract val newsSourceDao: NewsSourceDao
+    abstract val newsArticleDao: NewsArticleDao
 
     companion object {
         @Volatile
