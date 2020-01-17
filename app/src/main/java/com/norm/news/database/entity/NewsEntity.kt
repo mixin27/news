@@ -1,4 +1,4 @@
-package com.norm.news.data.local.entity
+package com.norm.news.database.entity
 
 import androidx.room.Entity
 

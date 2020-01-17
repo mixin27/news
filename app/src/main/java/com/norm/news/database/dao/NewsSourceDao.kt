@@ -1,8 +1,8 @@
-package com.norm.news.data.local.dao
+package com.norm.news.database.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.norm.news.data.local.entity.SourceEntity
+import com.norm.news.database.entity.SourceEntity
 
 /**
  * Created by KZYT on 16/01/2020.

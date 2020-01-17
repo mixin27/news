@@ -3,7 +3,6 @@ package com.norm.news.ui.source
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.norm.news.data.local.dao.NewsSourceDao
 import java.lang.IllegalArgumentException
 
 /**

@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.norm.news.data.local.NewsDatabase
+import com.norm.news.database.NewsDatabase
 import com.norm.news.domain.NewsSource
 import com.norm.news.network.ApiStatus
 import com.norm.news.repository.impl.NewsSourceRepositoryImpl

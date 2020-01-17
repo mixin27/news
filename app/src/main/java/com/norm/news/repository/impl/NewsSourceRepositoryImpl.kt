@@ -2,8 +2,8 @@ package com.norm.news.repository.impl
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
-import com.norm.news.data.local.NewsDatabase
-import com.norm.news.data.local.entity.asDomainModel
+import com.norm.news.database.NewsDatabase
+import com.norm.news.database.entity.asDomainModel
 import com.norm.news.domain.NewsSource
 import com.norm.news.network.NewsApiService
 import com.norm.news.network.model.asDatabaseModel

@@ -1,11 +1,11 @@
-package com.norm.news.data.local
+package com.norm.news.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.norm.news.data.local.dao.NewsSourceDao
-import com.norm.news.data.local.entity.SourceEntity
+import com.norm.news.database.dao.NewsSourceDao
+import com.norm.news.database.entity.SourceEntity
 
 /**
  * Created by KZYT on 16/01/2020.

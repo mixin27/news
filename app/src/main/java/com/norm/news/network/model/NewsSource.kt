@@ -1,6 +1,6 @@
 package com.norm.news.network.model
 
-import com.norm.news.data.local.entity.SourceEntity
+import com.norm.news.database.entity.SourceEntity
 
 /**
  * Created by KZYT on 16/01/2020.

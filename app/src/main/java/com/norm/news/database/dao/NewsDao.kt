@@ -1,4 +1,4 @@
-package com.norm.news.data.local.dao
+package com.norm.news.database.dao
 
 import androidx.room.Dao
 
