@@ -1,5 +1,11 @@
 # News
- Using `api` from [newsapi.org](https://newsapi.org/)
+[![GitHub issues](https://img.shields.io/github/issues/ZattWine/news)](https://github.com/ZattWine/news/issues)
+[![GitHub forks](https://img.shields.io/github/forks/ZattWine/news)](https://github.com/ZattWine/news/network)
+[![GitHub stars](https://img.shields.io/github/stars/ZattWine/news)](https://github.com/ZattWine/news/stargazers)
+[![GitHub license](https://img.shields.io/github/license/ZattWine/news)](https://github.com/ZattWine/news/blob/master/LICENSE)
+[![Twitter](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fgithub.com%2FZattWine%2Fnews)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2FZattWine%2Fnews)
+
+ API powered by [NewsAPI.org](https://newsapi.org/)
  
  Most of codes are referenced from [Android Kotlin Fundamentals Code Labs](https://codelabs.developers.google.com/android-kotlin-fundamentals/)
 
