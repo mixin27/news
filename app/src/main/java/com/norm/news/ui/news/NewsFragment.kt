@@ -43,7 +43,7 @@ class NewsFragment : Fragment() {
             newsViewModel.displayNewsSourceDetails(it)
         })
 
-        newsViewModel.navigateToSelectedItem.observe(this, Observer {
+        newsViewModel.navigateToSelectedItem.observe(viewLifecycleOwner, Observer {
             if (it != null) {
                 this.findNavController().navigate(
                     NewsFragmentDirections.actionNewsFragmentToNewsDetailFragment(it)

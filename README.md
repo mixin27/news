@@ -29,7 +29,12 @@
 # Todo
 - [x] News source lists
 - [x] News lists for each source
-- [ ] News Detail
+- [x] News Detail
+- [ ] Search everything
+- [ ] Notification
+- [ ] Open external link
+- [ ] License page
+- [ ] About app page
 - [ ] Dagger implementation
 
 # License

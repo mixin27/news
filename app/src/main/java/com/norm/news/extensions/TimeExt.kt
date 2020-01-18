@@ -2,7 +2,9 @@
 
 package com.norm.news.extensions
 
+import android.annotation.SuppressLint
 import org.threeten.bp.ZonedDateTime
+import java.text.SimpleDateFormat
 import java.util.*
 
 fun String.toZoneDateTime(): ZonedDateTime {
@@ -103,4 +105,10 @@ fun Long.getFriendlyTime(): String {
     sb.append(" ago")
 
     return sb.toString()
+}
+
+@SuppressLint("SimpleDateFormat")
+fun Long.secondToDateTime(): String {
+    return SimpleDateFormat("EE dd MMM yyyy, HH:mm")
+        .format(this * 1000L).toString()
 }

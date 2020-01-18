@@ -74,7 +74,7 @@
 
             <TextView
                 android:id="@+id/tv_publish_at"
-                style="@style/TextAppearance.DateTime"
+                style="@style/TextAppearance.DateTime1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:paddingStart="16dp"
