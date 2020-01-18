@@ -3,9 +3,12 @@ package com.norm.news.utils
 import android.os.Build
 import android.text.Html
 import android.view.View
+import android.webkit.WebView
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
@@ -68,5 +71,18 @@ fun setHtmlText(textView: TextView, htmlText: String) {
     } else {
         @Suppress("DEPRECATION")
         textView.text = Html.fromHtml(htmlText)
+    }
+}
+
+@BindingAdapter(value = ["dialogTitle", "fileLink"], requireAll = true)
+fun createDialogForFile(button: Button, dialogTitle: String, fileLink: String) {
+    val context = button.context
+    button.setOnClickListener {
+        val webView = WebView(context).apply { loadUrl(fileLink) }
+        AlertDialog.Builder(context)
+            .setTitle(dialogTitle)
+            .setView(webView)
+            .create()
+            .show()
     }
 }
