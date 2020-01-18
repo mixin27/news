@@ -1,9 +1,7 @@
 package com.norm.news.domain
 
 import android.os.Parcelable
-import com.norm.news.extensions.getFriendlyTime
-import com.norm.news.extensions.toMilliSecond
-import com.norm.news.extensions.toZoneDateTime
+import com.norm.news.extensions.*
 import kotlinx.android.parcel.Parcelize
 
 /**
@@ -32,7 +30,13 @@ data class NewsArticles(
     val urlToImage: String,
     val publishedAt: String,
     val content: String
-): Parcelable {
+) : Parcelable {
     val getFriendlyDate
         get() = publishedAt.toZoneDateTime().toMilliSecond().getFriendlyTime()
+
+    val getDateTime
+        get() = publishedAt.toZoneDateTime().toMilliSecond().secondToDateTime()
+
+    val getShorDescription
+    get() = content.smartTruncate(50)
 }

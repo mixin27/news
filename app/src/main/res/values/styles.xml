@@ -49,21 +49,21 @@
     </style>
 
     <style name="TextAppearance.Author" parent="TextAppearance.MaterialComponents.Body1">
-        <item name="fontFamily">@font/roboto_black</item>
+        <item name="fontFamily">@font/work_sans_semibold</item>
         <item name="android:textSize">14sp</item>
-        <item name="android:textAllCaps">true</item>
-        <item name="android:textColor">@color/primaryLightColor</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/secondaryDarkColor</item>
     </style>
 
     <style name="TextAppearance.DateTime1" parent="TextAppearance.MaterialComponents.Body1">
-        <item name="fontFamily">@font/roboto</item>
+        <item name="fontFamily">@font/work_sans_semibold</item>
         <item name="android:textSize">11sp</item>
         <item name="android:textAllCaps">false</item>
-        <item name="android:textColor">@color/primaryLightColor</item>
+        <item name="android:textColor">@color/secondaryDarkColor</item>
     </style>
 
     <style name="TextAppearance.DateTime2" parent="TextAppearance.MaterialComponents.Body1">
-        <item name="fontFamily">@font/roboto</item>
+        <item name="fontFamily">@font/roboto_black</item>
         <item name="android:textSize">14sp</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:textColor">@color/secondaryDarkColor</item>

@@ -1,8 +1,11 @@
 package com.norm.news.utils
 
+import android.os.Build
+import android.text.Html
 import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
+import android.widget.TextView
 import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
@@ -55,5 +58,15 @@ fun bindImageFromUrl(imageView: ImageView, imgUrl: String?) {
                     .placeholder(R.drawable.loading_animation)
                     .error(R.drawable.ic_broken_image))
             .into(imageView)
+    }
+}
+
+@BindingAdapter("htmlText")
+fun setHtmlText(textView: TextView, htmlText: String) {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+        textView.text = Html.fromHtml(htmlText, Html.FROM_HTML_MODE_COMPACT)
+    } else {
+        @Suppress("DEPRECATION")
+        textView.text = Html.fromHtml(htmlText)
     }
 }

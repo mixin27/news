@@ -61,7 +61,7 @@
                 android:paddingStart="16dp"
                 android:paddingEnd="8dp"
                 android:paddingTop="16dp"
-                android:text="@{viewModel.article.content}"
+                app:htmlText="@{viewModel.article.content}"
                 android:textAppearance="?attr/textAppearanceBody1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvAuthor"
@@ -69,13 +69,13 @@
 
             <TextView
                 android:id="@+id/tvPublishAt"
-                style="@style/TextAppearance.DateTime2"
+                style="@style/TextAppearance.DateTime1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:paddingStart="8dp"
                 android:paddingEnd="16dp"
                 android:paddingTop="16dp"
-                android:text="@{viewModel.article.publishedAt}"
+                android:text="@{viewModel.article.getDateTime}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvContent"
                 tools:text="2020-01-16T07:03:53Z"/>
