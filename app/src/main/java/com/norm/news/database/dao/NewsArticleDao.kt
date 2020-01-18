@@ -27,9 +27,9 @@ interface NewsArticleDao {
     @Query("SELECT * FROM news_article_table ORDER BY publishAt DESC LIMIT 1")
     fun getArticle(): NewsArticleEntity?
 
-    @Query("SELECT * FROM news_article_table ORDER BY publishAt")
+    @Query("SELECT * FROM news_article_table ORDER BY publishAt DESC")
     fun getAllArticles(): LiveData<List<NewsArticleEntity>>
 
-    @Query("SELECT * FROM news_article_table WHERE id IN (:id) ORDER BY publishAt")
+    @Query("SELECT * FROM news_article_table WHERE id IN (:id) ORDER BY publishAt DESC")
     fun getAllArticlesBySource(id: String): LiveData<List<NewsArticleEntity>>
 }
