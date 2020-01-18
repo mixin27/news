@@ -55,11 +55,18 @@
         <item name="android:textColor">@color/primaryLightColor</item>
     </style>
 
-    <style name="TextAppearance.DateTime" parent="TextAppearance.MaterialComponents.Body1">
+    <style name="TextAppearance.DateTime1" parent="TextAppearance.MaterialComponents.Body1">
         <item name="fontFamily">@font/roboto</item>
         <item name="android:textSize">11sp</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:textColor">@color/primaryLightColor</item>
+    </style>
+
+    <style name="TextAppearance.DateTime2" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="fontFamily">@font/roboto</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/secondaryDarkColor</item>
     </style>
 
 </resources>
