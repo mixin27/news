@@ -87,6 +87,9 @@ dependencies {
     implementation 'com.jakewharton.timber:timber:4.7.1'
     implementation 'com.android.support:multidex:1.0.3'
 
+    // debugImplementation because LeakCanary should only run in debug builds.
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.1'
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
