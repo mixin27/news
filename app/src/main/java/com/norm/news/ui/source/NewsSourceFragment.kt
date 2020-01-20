@@ -1,10 +1,11 @@
 package com.norm.news.ui.source
 
 
+import android.app.SearchManager
+import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import androidx.appcompat.widget.SearchView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -12,11 +13,17 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.norm.news.R
 import com.norm.news.databinding.FragmentNewsSourceBinding
+import timber.log.Timber
 
 /**
  * A simple [Fragment] subclass.
  */
 class NewsSourceFragment : Fragment() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,5 +58,28 @@ class NewsSourceFragment : Fragment() {
         })
 
         return binding.root
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.search_menu, menu)
+        // Associate searchable configuration with the SearchView
+        val searchManager = context!!.getSystemService(Context.SEARCH_SERVICE) as SearchManager
+        val searchView = menu.findItem(R.id.search).actionView as SearchView
+        searchView.apply {
+            setSearchableInfo(searchManager.getSearchableInfo(activity!!.componentName))
+        }
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextChange(newText: String?): Boolean {
+                Timber.d("Query = $newText")
+                return true
+            }
+
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                Timber.d("Submit Query = $query")
+                return true
+            }
+        })
+
+        super.onCreateOptionsMenu(menu, inflater)
     }
 }

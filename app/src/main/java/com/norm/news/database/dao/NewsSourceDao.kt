@@ -30,4 +30,7 @@ interface NewsSourceDao {
 
     @Query("SELECT * FROM news_source_table ORDER BY id")
     fun getAllSources(): LiveData<List<SourceEntity>>
+
+    @Query("SELECT * FROM news_source_table WHERE name LIKE '%' || :q || '%'")
+    fun searchSource(q: String): LiveData<List<SourceEntity>>
 }
