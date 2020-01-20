@@ -10,6 +10,7 @@ import com.norm.news.work.NewsSourceDataWorker
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import leakcanary.AppWatcher
 import timber.log.Timber
 import java.util.concurrent.TimeUnit
 
@@ -22,6 +23,11 @@ class NewsApp: Application() {
 
     override fun onCreate() {
         super.onCreate()
+
+        // Leakcanary
+         if (BuildConfig.DEBUG) {
+             AppWatcher.config = AppWatcher.config.copy(watchActivities = false)
+         }
 
         // ThreetenABP
         AndroidThreeTen.init(this)
