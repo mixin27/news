@@ -25,6 +25,7 @@
 - [Glide]() for image loading
 - [Timber]() for logging
 - [WorkManager]() for schedule background work
+- [LeakCanary](https://github.com/square/leakcanary/) for detecting memory leaks
 
 # Todo
 - [x] News source lists
