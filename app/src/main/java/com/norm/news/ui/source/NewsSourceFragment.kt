@@ -12,11 +12,18 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.norm.news.R
 import com.norm.news.databinding.FragmentNewsSourceBinding
+import com.norm.news.utils.IMMLeaks
 
 /**
  * A simple [Fragment] subclass.
  */
 class NewsSourceFragment : Fragment() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        // for input method memory leaks.
+        IMMLeaks.fixFocusedViewLeak(requireNotNull(this.activity).application)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
