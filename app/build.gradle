@@ -24,6 +24,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+
+        debug {
+            applicationIdSuffix ".debug"
+        }
     }
 
     dataBinding {
@@ -86,6 +90,13 @@ dependencies {
 
     implementation 'com.jakewharton.timber:timber:4.7.1'
     implementation 'com.android.support:multidex:1.0.3'
+
+    // LeakCanary for production to track and count retained instances.
+    // On your reporting code.
+    // val retainedInstanceCount = AppWatcher.objectWatcher.retainedObjectCount
+    implementation 'com.squareup.leakcanary:leakcanary-object-watcher-android:2.1'
+    // debugImplementation because LeakCanary should only run in debug builds.
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.1'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
