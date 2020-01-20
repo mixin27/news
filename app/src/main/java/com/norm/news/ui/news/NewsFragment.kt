@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 
 import com.norm.news.R
 import com.norm.news.databinding.FragmentNewsBinding
+import com.norm.news.utils.IMMLeaks
 import timber.log.Timber
 
 /**
@@ -21,6 +22,8 @@ class NewsFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
+        // for input method memory leaks.
+        IMMLeaks.fixFocusedViewLeak(requireNotNull(this.activity).application)
     }
 
     override fun onCreateView(

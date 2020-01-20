@@ -6,6 +6,7 @@ import android.os.Build
 import androidx.multidex.MultiDex
 import androidx.work.*
 import com.jakewharton.threetenabp.AndroidThreeTen
+import com.norm.news.utils.SemEmergencyManagerLeakingActivity
 import com.norm.news.work.NewsSourceDataWorker
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -17,7 +18,7 @@ import java.util.concurrent.TimeUnit
 /**
  * Created by KZYT on 16/01/2020.
  */
-class NewsApp: Application() {
+class NewsApp : Application() {
 
     private val applicationScope = CoroutineScope(Dispatchers.Default)
 
@@ -25,9 +26,12 @@ class NewsApp: Application() {
         super.onCreate()
 
         // Leakcanary
-         if (BuildConfig.DEBUG) {
-             AppWatcher.config = AppWatcher.config.copy(watchActivities = false)
-         }
+        if (BuildConfig.DEBUG) {
+            AppWatcher.config = AppWatcher.config.copy(watchActivities = false)
+        }
+
+        // Fixed a leak caused by SemEmergencyManager, see https://github.com/square/leakcanary/issues/762 .
+        SemEmergencyManagerLeakingActivity.applyFix(this)
 
         // ThreetenABP
         AndroidThreeTen.init(this)
