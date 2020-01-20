@@ -1,7 +1,7 @@
 <resources>
-    <style name="NewsToolBar" parent="Widget.MaterialComponents.Toolbar.Primary">
-        <item name="titleTextColor">@color/primaryTextColor</item>
-        <item name="android:tint">@color/primaryTextColor</item>
+    <style name="NewsToolBar" parent="Widget.MaterialComponents.Toolbar.Surface">
+<!--        <item name="android:textColorPrimary">@color/primaryTextColor</item>-->
+<!--        <item name="android:textColorSecondary">@color/primaryTextColor</item>-->
     </style>
 
     <style name="TextAppearance.Headline3" parent="TextAppearance.MaterialComponents.Headline3">

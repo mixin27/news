@@ -77,16 +77,6 @@ class NewsSourceViewModel(
 
     private fun getNewsSources() {
         uiScope.launch {
-//            val allSources = NewsApiService.retrofitService.getSourcesAsync(API_KEY)
-//            try {
-//                _status.value = ApiStatus.LOADING
-//                val listResult = allSources.await()
-//                _status.value = ApiStatus.SUCCESS
-//                _response.value = listResult
-//                _sources.value = listResult.sources
-//            } catch (e: Exception) {
-//                _status.value = ApiStatus.ERROR
-//            }
             try {
                 _status.value = ApiStatus.LOADING
                 newsSourceRepository.refreshNewsSource()
@@ -124,5 +114,4 @@ class NewsSourceViewModel(
     fun displayNewsSourceDetailsComplete() {
         _navigateToSelectedItem.value = null
     }
-
 }
