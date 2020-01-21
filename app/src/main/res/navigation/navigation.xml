@@ -40,13 +40,5 @@
         android:name="com.norm.news.ui.about.AboutFragment"
         android:label="About News"
         tools:layout="@layout/fragment_about" >
-        <action
-            android:id="@+id/action_dest_about_to_dest_license"
-            app:destination="@id/dest_license" />
     </fragment>
-    <fragment
-        android:id="@+id/dest_license"
-        android:name="com.norm.news.ui.about.LicenseFragment"
-        android:label="fragment_license"
-        tools:layout="@layout/fragment_license" />
 </navigation>

@@ -1,5 +1,5 @@
 <resources>
-    <style name="NewsToolBar" parent="Widget.MaterialComponents.Toolbar.Surface">
+    <style name="NewsToolBar" parent="Widget.MaterialComponents.Toolbar.Primary">
 <!--        <item name="android:textColorPrimary">@color/primaryTextColor</item>-->
 <!--        <item name="android:textColorSecondary">@color/primaryTextColor</item>-->
     </style>

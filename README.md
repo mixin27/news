@@ -15,27 +15,29 @@
 - News details
 
 # Libraries
-- [Material UI]() for material user interface
-- [Navigation]() for navigation
-- [Lifecycle]() for `ViewModel`, `LiveData` and other lifecycle awareness
-- [Room]() for local cache (database)
-- [Coroutines]() for job
-- [Retrofit]() for networking
-- [Moshi]() for json
-- [Glide]() for image loading
-- [Timber]() for logging
-- [WorkManager]() for schedule background work
+- [Material UI](https://github.com/material-components/material-components-android) for material user interface
+- [Navigation](https://github.com/ZattWine/news/blob/972de43c235b93674cfbe7ae4425762720882b73/app/build.gradle#L54) for navigation
+- [Lifecycle](https://github.com/ZattWine/news/blob/972de43c235b93674cfbe7ae4425762720882b73/app/build.gradle#L58) for `ViewModel`, `LiveData` and other lifecycle awareness
+- [Room](https://github.com/ZattWine/news/blob/972de43c235b93674cfbe7ae4425762720882b73/app/build.gradle#L61) for local cache (database)
+- [Coroutines](https://github.com/ZattWine/news/blob/972de43c235b93674cfbe7ae4425762720882b73/app/build.gradle#L65) for job
+- [Retrofit](https://github.com/square/retrofit) for networking
+- [OkHttp](https://github.com/square/okhttp)for client - user agent
+- [Moshi](https://github.com/square/moshi) for json
+- [Glide](https://github.com/bumptech/glide) for image loading and caching
+- [Timber](https://github.com/JakeWharton/timber) for logging
+- [WorkManager](https://github.com/ZattWine/news/blob/972de43c235b93674cfbe7ae4425762720882b73/app/build.gradle#L70) for schedule background work
 - [LeakCanary](https://github.com/square/leakcanary/) for detecting memory leaks
+- [ThreeTen Android Backport](https://github.com/JakeWharton/ThreeTenABP)
 
 # Todo
 - [x] News source lists
 - [x] News lists for each source
 - [x] News Detail
+- [x] About app page
+- [x] License page
 - [ ] Search everything
 - [ ] Notification
 - [ ] Open external link
-- [ ] License page
-- [ ] About app page
 - [ ] Dagger implementation
 
 # License
