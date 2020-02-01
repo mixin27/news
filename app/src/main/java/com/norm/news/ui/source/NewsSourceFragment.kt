@@ -40,7 +40,7 @@ class NewsSourceFragment : Fragment() {
         )
         // Specify the current activity as the lifecycle owner of the binding.
         // This is necessary so that the binding can observe LiveData updates.
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = viewLifecycleOwner
 
         val application = requireNotNull(this.activity).application
         val viewModelFactory = NewsSourceViewModelFactory(application)
