@@ -33,7 +33,7 @@ class NewsDetailFragment : Fragment() {
             container,
             false
         )
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = viewLifecycleOwner
 
         val application = requireNotNull(this.activity).application
         val args = arguments?.let {
