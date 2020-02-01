@@ -1,4 +1,5 @@
 # News
+[![Build Status](https://travis-ci.com/ZattWine/news.svg?branch=master)](https://travis-ci.com/ZattWine/news)
 [![GitHub issues](https://img.shields.io/github/issues/ZattWine/news)](https://github.com/ZattWine/news/issues)
 [![GitHub forks](https://img.shields.io/github/forks/ZattWine/news)](https://github.com/ZattWine/news/network)
 [![GitHub stars](https://img.shields.io/github/stars/ZattWine/news)](https://github.com/ZattWine/news/stargazers)

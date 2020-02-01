@@ -1,10 +1,10 @@
 name: Build Debug Apk
 
 on:
-  push:
-    branches:
-      - master
-
+ push:
+  branches:
+   - master
+   
 jobs:
   build:
     name: Build APK
