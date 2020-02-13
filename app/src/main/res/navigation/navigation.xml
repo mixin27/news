@@ -5,40 +5,39 @@
     android:id="@+id/navigation"
     app:startDestination="@id/newsSourceFragment">
 
-    <fragment
-        android:id="@+id/newsSourceFragment"
-        android:name="com.norm.news.ui.source.NewsSourceFragment"
-        android:label="News Sources"
-        tools:layout="@layout/fragment_news_source">
-        <action
-            android:id="@+id/action_newsSourceFragment_to_newsFragment"
-            app:destination="@+id/newsFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/newsFragment"
-        android:name="com.norm.news.ui.news.NewsFragment"
-        android:label="News"
-        tools:layout="@layout/fragment_news">
-        <argument
-            android:name="selectedSourceId"
-            app:argType="string" />
-        <action
-            android:id="@+id/action_newsFragment_to_newsDetailFragment"
-            app:destination="@id/newsDetailFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/newsDetailFragment"
-        android:name="com.norm.news.ui.news.NewsDetailFragment"
-        android:label="News Details"
-        tools:layout="@layout/fragment_news_detail">
-        <argument
-            android:name="selectedArticle"
-            app:argType="com.norm.news.domain.NewsArticles"/>
-    </fragment>
-    <fragment
-        android:id="@+id/dest_about"
-        android:name="com.norm.news.ui.about.AboutFragment"
-        android:label="About News"
-        tools:layout="@layout/fragment_about" >
-    </fragment>
+  <fragment
+      android:id="@+id/newsSourceFragment"
+      android:name="com.norm.news.ui.source.NewsSourceFragment"
+      android:label="News Sources"
+      tools:layout="@layout/fragment_news_source">
+    <action
+        android:id="@+id/action_newsSourceFragment_to_newsFragment"
+        app:destination="@+id/newsFragment" />
+  </fragment>
+  <fragment
+      android:id="@+id/newsFragment"
+      android:name="com.norm.news.ui.news.NewsFragment"
+      android:label="News"
+      tools:layout="@layout/fragment_news">
+    <argument
+        android:name="selectedSourceId"
+        app:argType="string" />
+    <action
+        android:id="@+id/action_newsFragment_to_newsDetailFragment"
+        app:destination="@id/newsDetailFragment" />
+  </fragment>
+  <fragment
+      android:id="@+id/newsDetailFragment"
+      android:name="com.norm.news.ui.news.NewsDetailFragment"
+      android:label="News Details"
+      tools:layout="@layout/fragment_news_detail">
+    <argument
+        android:name="selectedArticle"
+        app:argType="com.norm.news.domain.NewsArticles" />
+  </fragment>
+  <fragment
+      android:id="@+id/dest_about"
+      android:name="com.norm.news.ui.about.AboutFragment"
+      android:label="About News"
+      tools:layout="@layout/fragment_about"/>
 </navigation>

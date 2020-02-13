@@ -1,23 +1,26 @@
 <resources>
-    <string name="app_name">News</string>
+  <string name="app_name">News</string>
 
-    <string name="str_about">About</string>
+  <!-- TODO: Remove or change this placeholder text -->
+  <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <string name="lorem_ipsum">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</string>
-    <string name="str_license">License</string>
+  <string name="str_about">About</string>
 
-    <string name="oss_file" translatable="false">file:///android_asset/licenses.html</string>
-    <string name="str_oss_licenses">OSS License</string>
+  <string name="lorem_ipsum">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</string>
+  <string name="str_license">License</string>
 
-    <string name="about_app">
+  <string name="oss_file" translatable="false">file:///android_asset/licenses.html</string>
+  <string name="str_oss_licenses">OSS License</string>
+
+  <string name="about_app">
         News application is an app which show news source lists and articles of each source.
         You can see news sources, articles and article details. All of the news data(information) are powered by
         https://newsapi.org/ and thanks for free to developer and permit to develop open source projects. I hope
         this app may help you something else.
-    </string>
+  </string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="str_search">Search</string>
-    <string name="str_search_hint">Type your word</string>
+  <string name="str_search">Search</string>
+  <string name="str_search_hint">Type your word</string>
+  <string name="str_network_error_placeholder_image">Network Error placeholder image</string>
+  <string name="str_news_image">News image</string>
 </resources>

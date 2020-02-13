@@ -12,29 +12,33 @@ import com.norm.news.database.entity.SourceEntity
 /**
  * Created by KZYT on 16/01/2020.
  */
-@Database(entities = [SourceEntity::class, NewsArticleEntity::class], version = 4, exportSchema = false)
+@Database(
+    entities = [SourceEntity::class, NewsArticleEntity::class], version = 4, exportSchema = false
+)
 abstract class NewsDatabase : RoomDatabase() {
-    abstract val newsSourceDao: NewsSourceDao
-    abstract val newsArticleDao: NewsArticleDao
+  abstract val newsSourceDao: NewsSourceDao
+  abstract val newsArticleDao: NewsArticleDao
 
-    companion object {
-        @Volatile
-        private var INSTANCE: NewsDatabase? = null
+  companion object {
+    @Volatile
+    private var INSTANCE: NewsDatabase? = null
 
-        fun getInstance(context: Context): NewsDatabase {
-            synchronized(this) {
-                var instance = INSTANCE
-                if (instance == null) {
-                    instance = Room.databaseBuilder(
-                        context.applicationContext,
-                        NewsDatabase::class.java,
-                        "news_database"
-                    ).fallbackToDestructiveMigration().build()
+    fun getInstance(context: Context): NewsDatabase {
+      synchronized(this) {
+        var instance = INSTANCE
+        if (instance == null) {
+          instance = Room.databaseBuilder(
+              context.applicationContext,
+              NewsDatabase::class.java,
+              "news_database"
+          )
+              .fallbackToDestructiveMigration()
+              .build()
 
-                    INSTANCE = instance
-                }
-                return instance
-            }
+          INSTANCE = instance
         }
+        return instance
+      }
     }
+  }
 }

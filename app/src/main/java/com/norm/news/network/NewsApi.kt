@@ -11,14 +11,14 @@ import retrofit2.http.Query
  * Created by KZYT on 16/01/2020.
  */
 interface NewsApi {
-    @GET("sources")
-    fun getSourcesAsync(
+  @GET("sources")
+  fun getSourcesAsync(
 //        @Query("apiKey") apiKey: String = API_KEY
-    ): Deferred<NewsSourceResponse>
+  ): Deferred<NewsSourceResponse>
 
-    @GET("top-headlines")
-    fun getTopHeadLineArticlesAsync(
-        @Query("sources") source: String
+  @GET("top-headlines")
+  fun getTopHeadLineArticlesAsync(
+    @Query("sources") source: String
 //        @Query("apiKey") apiKey: String = API_KEY
-    ): Deferred<NewsResponse>
+  ): Deferred<NewsResponse>
 }

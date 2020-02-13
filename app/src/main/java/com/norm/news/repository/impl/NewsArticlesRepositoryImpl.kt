@@ -16,20 +16,21 @@ import timber.log.Timber
  * Created by Kyaw Zayar Tun on 2020-01-17.
  */
 class NewsArticlesRepositoryImpl(
-    private val database: NewsDatabase,
-    private val sourceId: String
+  private val database: NewsDatabase,
+  private val sourceId: String
 ) : NewsArticleRepository {
 
-    val articles: LiveData<List<NewsArticles>> =
-        Transformations.map(database.newsArticleDao.getAllArticlesBySource(sourceId)) {
-            it.asDomainModel()
-        }
-
-    override suspend fun refreshArticles() {
-        withContext(Dispatchers.IO) {
-            Timber.d("Refresh news articles is called")
-            val newsArticles = NewsApiService.retrofitService.getTopHeadLineArticlesAsync(sourceId).await()
-            database.newsArticleDao.insertAll(newsArticles.asDatabaseModel())
-        }
+  val articles: LiveData<List<NewsArticles>> =
+    Transformations.map(database.newsArticleDao.getAllArticlesBySource(sourceId)) {
+      it.asDomainModel()
     }
+
+  override suspend fun refreshArticles() {
+    withContext(Dispatchers.IO) {
+      Timber.d("Refresh news articles is called")
+      val newsArticles = NewsApiService.retrofitService.getTopHeadLineArticlesAsync(sourceId)
+          .await()
+      database.newsArticleDao.insertAll(newsArticles.asDatabaseModel())
+    }
+  }
 }

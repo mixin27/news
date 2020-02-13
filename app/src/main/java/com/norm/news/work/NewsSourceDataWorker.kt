@@ -12,23 +12,24 @@ import timber.log.Timber
  * Created by Kyaw Zayar Tun on 2020-01-17.
  */
 class NewsSourceDataWorker(
-    context: Context, params: WorkerParameters
+  context: Context,
+  params: WorkerParameters
 ) : CoroutineWorker(context, params) {
-    override suspend fun doWork(): Result {
-        val database = NewsDatabase.getInstance(applicationContext)
-        val repository = NewsSourceRepositoryImpl(database)
+  override suspend fun doWork(): Result {
+    val database = NewsDatabase.getInstance(applicationContext)
+    val repository = NewsSourceRepositoryImpl(database)
 
-        try {
-            repository.refreshNewsSource()
-            Timber.d("WorkManager: Work request for sync is run")
-        } catch (e: HttpException) {
-            return Result.retry()
-        }
-
-        return Result.success()
+    try {
+      repository.refreshNewsSource()
+      Timber.d("WorkManager: Work request for sync is run")
+    } catch (e: HttpException) {
+      return Result.retry()
     }
 
-    companion object {
-        const val WORK_NAME = "com.norm.news.work.NewsSourceDataWorker"
-    }
+    return Result.success()
+  }
+
+  companion object {
+    const val WORK_NAME = "com.norm.news.work.NewsSourceDataWorker"
+  }
 }

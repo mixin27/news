@@ -1,6 +1,5 @@
 package com.norm.news.ui.about
 
-
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,32 +16,32 @@ import com.norm.news.utils.IMMLeaks
  */
 class AboutFragment : Fragment() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        // for input method memory leaks.
-        IMMLeaks.fixFocusedViewLeak(requireNotNull(this.activity).application)
-    }
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    // for input method memory leaks.
+    IMMLeaks.fixFocusedViewLeak(requireNotNull(this.activity).application)
+  }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val binding: FragmentAboutBinding = DataBindingUtil.inflate(
-            inflater,
-            R.layout.fragment_about,
-            container,
-            false
-        )
-        binding.lifecycleOwner = viewLifecycleOwner
+  override fun onCreateView(
+    inflater: LayoutInflater,
+    container: ViewGroup?,
+    savedInstanceState: Bundle?
+  ): View? {
+    val binding: FragmentAboutBinding = DataBindingUtil.inflate(
+        inflater,
+        R.layout.fragment_about,
+        container,
+        false
+    )
+    binding.lifecycleOwner = viewLifecycleOwner
 
-        val application = requireNotNull(this.activity).application
-        val aboutViewModelFactory = AboutViewModelFactory(application)
-        val aboutViewModel =
-            ViewModelProviders.of(this, aboutViewModelFactory).get(AboutViewModel::class.java)
-        binding.viewModel = aboutViewModel
+    val application = requireNotNull(this.activity).application
+    val aboutViewModelFactory = AboutViewModelFactory(application)
+    val aboutViewModel =
+      ViewModelProviders.of(this, aboutViewModelFactory)
+          .get(AboutViewModel::class.java)
+    binding.viewModel = aboutViewModel
 
-        return binding.root
-    }
-
-
+    return binding.root
+  }
 }
