@@ -10,41 +10,41 @@ import com.norm.news.domain.NewsSource
  */
 @Entity(tableName = "news_source_table")
 data class SourceEntity(
-    @PrimaryKey
-    val id: String,
+  @PrimaryKey
+  val id: String,
 
-    @ColumnInfo(name = "name")
-    val name: String,
+  @ColumnInfo(name = "name")
+  val name: String,
 
-    @ColumnInfo(name = "description")
-    val description: String,
+  @ColumnInfo(name = "description")
+  val description: String,
 
-    @ColumnInfo(name = "url")
-    val url: String,
+  @ColumnInfo(name = "url")
+  val url: String,
 
-    @ColumnInfo(name = "category")
-    val category: String,
+  @ColumnInfo(name = "category")
+  val category: String,
 
-    @ColumnInfo(name = "language")
-    val language: String,
+  @ColumnInfo(name = "language")
+  val language: String,
 
-    @ColumnInfo(name = "country")
-    val country: String
+  @ColumnInfo(name = "country")
+  val country: String
 )
 
 /**
  * Extension function for Map<Entity, Domain>
  */
 fun List<SourceEntity>.asDomainModel(): List<NewsSource> {
-    return map {
-        NewsSource(
-            id = it.id,
-            name = it.name,
-            description = it.description,
-            url = it.url,
-            category = it.category,
-            language = it.language,
-            country = it.country
-        )
-    }
+  return map {
+    NewsSource(
+        id = it.id,
+        name = it.name,
+        description = it.description,
+        url = it.url,
+        category = it.category,
+        language = it.language,
+        country = it.country
+    )
+  }
 }

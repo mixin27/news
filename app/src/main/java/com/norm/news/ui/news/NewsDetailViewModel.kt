@@ -8,8 +8,8 @@ import com.norm.news.domain.NewsArticles
  * Created by Kyaw Zayar Tun on 2020-01-18.
  */
 class NewsDetailViewModel(
-    private val application: Application,
-    newsArticles: NewsArticles
+  private val application: Application,
+  newsArticles: NewsArticles
 ) : ViewModel() {
-    val article = newsArticles
+  val article = newsArticles
 }

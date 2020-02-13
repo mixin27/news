@@ -6,12 +6,18 @@ import com.norm.news.domain.NewsSource
 /**
  * Created by KZYT on 16/01/2020.
  */
-class NewsSourceDiffCallback: DiffUtil.ItemCallback<NewsSource>() {
-    override fun areItemsTheSame(oldItem: NewsSource, newItem: NewsSource): Boolean {
-        return oldItem.id == newItem.id
-    }
+class NewsSourceDiffCallback : DiffUtil.ItemCallback<NewsSource>() {
+  override fun areItemsTheSame(
+    oldItem: NewsSource,
+    newItem: NewsSource
+  ): Boolean {
+    return oldItem.id == newItem.id
+  }
 
-    override fun areContentsTheSame(oldItem: NewsSource, newItem: NewsSource): Boolean {
-        return oldItem == newItem
-    }
+  override fun areContentsTheSame(
+    oldItem: NewsSource,
+    newItem: NewsSource
+  ): Boolean {
+    return oldItem == newItem
+  }
 }

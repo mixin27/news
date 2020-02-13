@@ -17,12 +17,13 @@ import retrofit2.converter.moshi.MoshiConverterFactory
  */
 
 private val authInterceptor = object : Interceptor {
-    override fun intercept(chain: Interceptor.Chain): Response {
-        val newRequest = chain.request().newBuilder()
-            .addHeader("X-Api-Key", API_KEY)
-            .build()
-        return chain.proceed(newRequest)
-    }
+  override fun intercept(chain: Interceptor.Chain): Response {
+    val newRequest = chain.request()
+        .newBuilder()
+        .addHeader("X-Api-Key", API_KEY)
+        .build()
+    return chain.proceed(newRequest)
+  }
 }
 
 private val okHttpClient = OkHttpClient.Builder()
@@ -49,7 +50,7 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 object NewsApiService {
-    val retrofitService: NewsApi by lazy {
-        retrofit.create(NewsApi::class.java)
-    }
+  val retrofitService: NewsApi by lazy {
+    retrofit.create(NewsApi::class.java)
+  }
 }
