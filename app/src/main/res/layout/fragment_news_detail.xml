@@ -48,7 +48,7 @@
           tools:text="Title"
           />
 
-      <TextView
+      <com.norm.news.widget.HtmlTextView
           android:id="@+id/tvAuthor"
           style="@style/TextAppearance.Author"
           android:layout_width="0dp"
@@ -56,21 +56,22 @@
           android:paddingStart="16dp"
           android:paddingTop="8dp"
           android:paddingEnd="8dp"
-          android:text="@{viewModel.article.author}"
+          htmlText="@{viewModel.article.author}"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toBottomOf="@+id/tvTitle"
           tools:text="John Smith"
           />
 
-      <TextView
+      <com.norm.news.widget.HtmlTextView
           android:id="@+id/tvContent"
           android:layout_width="0dp"
           android:layout_height="wrap_content"
           android:paddingStart="16dp"
           android:paddingTop="16dp"
           android:paddingEnd="8dp"
+          android:textIsSelectable="true"
           android:textAppearance="?attr/textAppearanceBody1"
-          app:htmlText="@{viewModel.article.content}"
+          app:htmlText="@{viewModel.article.getContentWithHtmlText}"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toBottomOf="@+id/tvAuthor"
           tools:text="@string/lorem_ipsum"

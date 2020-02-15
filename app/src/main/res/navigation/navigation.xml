@@ -12,7 +12,11 @@
       tools:layout="@layout/fragment_news_source">
     <action
         android:id="@+id/action_newsSourceFragment_to_newsFragment"
-        app:destination="@+id/newsFragment" />
+        app:destination="@+id/newsFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right"/>
   </fragment>
   <fragment
       android:id="@+id/newsFragment"
@@ -24,7 +28,11 @@
         app:argType="string" />
     <action
         android:id="@+id/action_newsFragment_to_newsDetailFragment"
-        app:destination="@id/newsDetailFragment" />
+        app:destination="@id/newsDetailFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right"/>
   </fragment>
   <fragment
       android:id="@+id/newsDetailFragment"

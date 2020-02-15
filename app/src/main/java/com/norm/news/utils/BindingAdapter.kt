@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.norm.news.R
 import com.norm.news.network.ApiStatus
+import com.norm.news.widget.HtmlTextView
 
 /**
  * Created by KZYT on 16/01/2020.
@@ -79,7 +80,7 @@ fun bindImageFromUrl(
 
 @BindingAdapter("htmlText")
 fun setHtmlText(
-  textView: TextView,
+  textView: HtmlTextView,
   htmlText: String
 ) {
   if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
