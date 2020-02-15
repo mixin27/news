@@ -1,6 +1,7 @@
 package com.norm.news.database.dao
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -36,4 +37,7 @@ interface NewsArticleDao {
 
   @Query("SELECT * FROM news_article_table WHERE id IN (:id) ORDER BY publishAt DESC")
   fun getAllArticlesBySource(id: String): LiveData<List<NewsArticleEntity>>
+
+  @Query("SELECT * FROM news_article_table WHERE title LIKE :query")
+  fun searchByTitle(query: String): MediatorLiveData<List<NewsArticleEntity>>
 }

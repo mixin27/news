@@ -3,6 +3,7 @@ package com.norm.news.utils
 import android.os.Build
 import android.text.Html
 import android.view.View
+import android.view.View.*
 import android.webkit.WebView
 import android.widget.Button
 import android.widget.ImageView
@@ -106,4 +107,14 @@ fun createDialogForFile(
         .create()
         .show()
   }
+}
+
+@BindingAdapter("invisibleUnless")
+fun invisibleUnless(view: View, visible: Boolean) {
+    view.visibility = if (visible) VISIBLE else INVISIBLE
+}
+
+@BindingAdapter("goneUnless")
+fun goneUnless(view: View, visible: Boolean) {
+    view.visibility = if (visible) VISIBLE else GONE
 }
