@@ -3,6 +3,7 @@ package com.norm.news.database.entity
 import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.Fts4
 import androidx.room.PrimaryKey
 import com.norm.news.domain.NewsArticles
 
@@ -10,8 +11,9 @@ import com.norm.news.domain.NewsArticles
  * Created by KZYT on 16/01/2020.
  */
 @Entity(tableName = "news_article_table")
+@Fts4
 data class NewsArticleEntity(
-  @ColumnInfo(name = "id")
+  @ColumnInfo(name = "articleId")
   val id: String,
 
   @ColumnInfo(name = "author")
@@ -23,8 +25,6 @@ data class NewsArticleEntity(
   @ColumnInfo(name = "description")
   val description: String? = "",
 
-  @PrimaryKey
-  @NonNull
   @ColumnInfo(name = "url")
   val url: String,
 

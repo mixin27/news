@@ -1,12 +1,18 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
   <style name="NewsToolBar" parent="Widget.MaterialComponents.Toolbar.Primary">
     <!--        <item name="android:textColorPrimary">@color/primaryTextColor</item>-->
     <!--        <item name="android:textColorSecondary">@color/primaryTextColor</item>-->
   </style>
 
+  <style name="TextAppearance.News.ToolbarTitle" parent="@style/TextAppearance.Widget.AppCompat.Toolbar.Title">
+    <item name="android:fontFamily">@font/work_sans</item>
+    <item name="android:textSize" tools:ignore="SpUsage">20dp</item>
+    <item name="android:textColor">@color/primaryTextColor</item>
+  </style>
+
   <style name="Widget.News.AppBar" parent="Widget.MaterialComponents.AppBarLayout.Surface">
-    <item name="android:elevation">8dp</item>
+    <item name="android:elevation" tools:targetApi="lollipop">8dp</item>
   </style>
 
   <style name="TextAppearance.Headline3" parent="TextAppearance.MaterialComponents.Headline3">

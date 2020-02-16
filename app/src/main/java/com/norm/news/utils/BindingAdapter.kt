@@ -8,7 +8,6 @@ import android.webkit.WebView
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.ProgressBar
-import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter

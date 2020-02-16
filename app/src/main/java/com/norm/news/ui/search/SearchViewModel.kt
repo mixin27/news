@@ -1,5 +1,6 @@
 package com.norm.news.ui.search
 
+import android.annotation.SuppressLint
 import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
@@ -7,7 +8,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.norm.news.database.NewsDatabase
 import com.norm.news.domain.NewsArticles
-import kotlinx.coroutines.*
+import com.norm.news.domain.search.Searchable
+import com.norm.news.repository.impl.NewsArticlesRepositoryImpl
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 import timber.log.Timber
 
 /**
@@ -17,10 +23,8 @@ class SearchViewModel(
     private val application: Application
 ) : ViewModel(), SearchResultHandler {
 
-    val job = Job()
-    val uiScope = CoroutineScope(job + Dispatchers.Main)
-
-    val newsArticleDao = NewsDatabase.getInstance(application).newsArticleDao
+    private val job = Job()
+    private val uiScope = CoroutineScope(job + Dispatchers.Main)
 
     var searchUsingRoomFeatureEnabled: Boolean = true
 
@@ -53,31 +57,48 @@ class SearchViewModel(
             return
         }
 
-        executeSearch(newQuery)
+        // executeSearch(newQuery)
     }
 
     private fun executeSearch(query: String) {
         if (searchUsingRoomFeatureEnabled) {
             Timber.d("Searching for query using Room: $query")
             uiScope.launch {
-                processSearchResult(query)
+                processSearchResult(query.trim())
             }
         }
     }
 
-    private suspend fun processSearchResult(query: String) {
-        withContext(Dispatchers.IO) {
-            val result = newsArticleDao.searchByTitle(query)
-            _searchResults.value = result.value!!.map {
+    @SuppressLint("DefaultLocale")
+    private fun processSearchResult(parameters: String) {
+        uiScope.launch {
+            val query = if (parameters.isNotEmpty()) {
+                parameters.split(", ", " ", ",").take(5).map {
+                    "${it.toLowerCase()}*"
+                }.joinToString { " AND " }
+            } else {
+                parameters
+            }
+            val articleRepository = NewsArticlesRepositoryImpl(NewsDatabase.getInstance(application), query = query)
+            val articlesResult = articleRepository.searchArticlesByTitle()
+            val allArticles = articleRepository.allArticles
+
+            val searchArticles = allArticles.value!!.filter {
+                it.url in articlesResult
+            }.map {
+                Searchable.SearchedArticle(it)
+            }
+
+            _searchResults.value = searchArticles.map {
                 SearchResult(
-                    it.id,
-                    it.author,
-                    it.title,
-                    it.description,
-                    it.url,
-                    it.urlToImage,
-                    it.publishedAt,
-                    it.content
+                    it.articles.id,
+                    it.articles.author,
+                    it.articles.title,
+                    it.articles.description,
+                    it.articles.url,
+                    it.articles.urlToImage,
+                    it.articles.publishedAt,
+                    it.articles.content
                 )
             }
 

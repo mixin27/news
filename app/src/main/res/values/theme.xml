@@ -20,6 +20,11 @@
     <item name="textAppearanceSubtitle2">@style/TextAppearance.Subtitle2</item>
   </style>
 
+  <style name="AppTheme.NoActionBar">
+    <item name="windowActionBar">false</item>
+    <item name="windowNoTitle">true</item>
+  </style>
+
   <style name="AppTheme.AppOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar" />
 
   <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.MaterialComponents.Light" />

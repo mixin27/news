@@ -22,7 +22,7 @@ class NewsSourceFragment : Fragment() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setHasOptionsMenu(true)
+    // setHasOptionsMenu(true)
     // for input method memory leaks.
     IMMLeaks.fixFocusedViewLeak(requireNotNull(this.activity).application)
   }
@@ -64,29 +64,29 @@ class NewsSourceFragment : Fragment() {
     return binding.root
   }
 
-  override fun onCreateOptionsMenu(
-    menu: Menu,
-    inflater: MenuInflater
-  ) {
-    inflater.inflate(R.menu.search_menu, menu)
-    // Associate searchable configuration with the SearchView
-    val searchManager = context!!.getSystemService(Context.SEARCH_SERVICE) as SearchManager
-    val searchView = menu.findItem(R.id.search).actionView as SearchView
-    searchView.apply {
-      setSearchableInfo(searchManager.getSearchableInfo(activity!!.componentName))
-    }
-    searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-      override fun onQueryTextChange(newText: String?): Boolean {
-        Timber.d("Query = $newText")
-        return true
-      }
-
-      override fun onQueryTextSubmit(query: String?): Boolean {
-        Timber.d("Submit Query = $query")
-        return true
-      }
-    })
-
-    super.onCreateOptionsMenu(menu, inflater)
-  }
+//  override fun onCreateOptionsMenu(
+//    menu: Menu,
+//    inflater: MenuInflater
+//  ) {
+//    inflater.inflate(R.menu.search_menu, menu)
+//    // Associate searchable configuration with the SearchView
+//    val searchManager = context!!.getSystemService(Context.SEARCH_SERVICE) as SearchManager
+//    val searchView = menu.findItem(R.id.search).actionView as SearchView
+//    searchView.apply {
+//      setSearchableInfo(searchManager.getSearchableInfo(activity!!.componentName))
+//    }
+//    searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+//      override fun onQueryTextChange(newText: String?): Boolean {
+//        Timber.d("Query = $newText")
+//        return true
+//      }
+//
+//      override fun onQueryTextSubmit(query: String?): Boolean {
+//        Timber.d("Submit Query = $query")
+//        return true
+//      }
+//    })
+//
+//    super.onCreateOptionsMenu(menu, inflater)
+//  }
 }
