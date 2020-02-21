@@ -15,7 +15,5 @@ class AboutViewModel(
   val versionCode = BuildConfig.VERSION_CODE
   val versionName = BuildConfig.VERSION_NAME
   val buildType = BuildConfig.BUILD_TYPE
-  val applicationId = BuildConfig.APPLICATION_ID
-
-  val buildVersionNumber = "Version $versionName-$buildType"
+  val buildVersionNumber = "Version $versionName, $buildType $versionCode"
 }

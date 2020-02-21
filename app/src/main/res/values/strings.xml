@@ -16,7 +16,7 @@
     <string name="about_app">
         News application is an app which show news source lists and articles of each source.
         You can see news sources, articles and article details. All of the news data(information) are powered by
-        https://newsapi.org/ and thanks for free to developer and permit to develop open source projects. I hope
+        <a href="https://newsapi.org">https://newsapi.org/</a> and thanks for free to developer and permit to develop open source projects. I hope
         this app may help you something else.
   </string>
 

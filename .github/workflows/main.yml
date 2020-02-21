@@ -40,9 +40,9 @@ jobs:
           path: app/build/outputs/apk/debug/app-debug.apk
 
       # Release debug build apk only
-      # - name: Releasing using Hub
-        # uses: ShaunLWM/action-release-debugapk@master
-        # env:
-          # GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}
-          # APP_FOLDER: app
-          # RELEASE_TITLE: Release Debug Build
+#      - name: Releasing using Hub
+#        uses: ShaunLWM/action-release-debugapk@master
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}
+#          APP_FOLDER: app
+#          RELEASE_TITLE: Release Debug Build

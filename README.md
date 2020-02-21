@@ -36,9 +36,9 @@
 - [x] News Detail
 - [x] About app page
 - [x] License page
+- [x] Open external link
 - [ ] Search everything
 - [ ] Notification
-- [ ] Open external link
 - [ ] Dagger implementation
 
 # License
