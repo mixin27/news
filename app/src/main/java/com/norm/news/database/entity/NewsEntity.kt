@@ -11,7 +11,6 @@ import com.norm.news.domain.NewsArticles
  * Created by KZYT on 16/01/2020.
  */
 @Entity(tableName = "news_article_table")
-@Fts4
 data class NewsArticleEntity(
   @ColumnInfo(name = "articleId")
   val id: String,
@@ -25,6 +24,7 @@ data class NewsArticleEntity(
   @ColumnInfo(name = "description")
   val description: String? = "",
 
+  @PrimaryKey
   @ColumnInfo(name = "url")
   val url: String,
 

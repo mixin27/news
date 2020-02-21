@@ -5,6 +5,4 @@ package com.norm.news.repository
  */
 interface NewsArticleRepository {
   suspend fun refreshArticles()
-
-  suspend fun searchArticlesByTitle(): Set<String>
 }

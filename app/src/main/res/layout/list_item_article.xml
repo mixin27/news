@@ -67,7 +67,7 @@
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
                 android:paddingBottom="16dp"
-                app:htmlText="@{article.getAuthorShort}"
+                app:htmlText="@{article.getAuthor}"
                 app:layout_constraintEnd_toStartOf="@+id/tv_publish_at"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_description"

@@ -27,4 +27,5 @@
     <string name="str_terms_of_service">Terms of service</string>
     <string name="str_privacy_policy">Privacy policy</string>
     <string name="search_schedule_no_results" translation_description="Text that is shown if there are no search results">No results found</string>
+    <string name="str_article_detail_warning">Article content details are limited by <a href="https://newsapi.org">newsapi.org</a>.</string>
 </resources>

@@ -1,11 +1,7 @@
 package com.norm.news.domain
 
 import android.os.Parcelable
-import com.norm.news.extensions.getFriendlyTime
-import com.norm.news.extensions.secondToDateTime
-import com.norm.news.extensions.smartTruncate
-import com.norm.news.extensions.toMilliSecond
-import com.norm.news.extensions.toZoneDateTime
+import com.norm.news.extensions.*
 import kotlinx.android.parcel.Parcelize
 
 /**
@@ -42,8 +38,17 @@ data class NewsArticles(
         get() = publishedAt.toZoneDateTime().toMilliSecond().secondToDateTime()
 
     val getContentWithHtmlText
-    get() = content.plus("<p><a href=\"${url}\">Read more >>></a><p>")
+        get() = content.plus("<p><a href=\"${url}\">Read more >>></a><p>")
 
-    val getAuthorShort
-        get() = author.smartTruncate(20)
+    val getAuthor
+        get() = when (author.isUrl()) {
+            true -> "<a href=\"$author\">See author</a>"
+            else -> author
+        }
+
+    val getTextColor
+        get() = when (author.isUrl()) {
+            true -> "#1976d2"
+            else -> ""
+        }
 }

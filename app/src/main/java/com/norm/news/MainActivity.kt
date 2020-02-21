@@ -22,9 +22,9 @@ class MainActivity : AppCompatActivity() {
     // Request that our window is laid out full screen, to draw edge-to-edge. See the following
     // blog post for more info:
     // https://medium.com/androiddevelopers/gesture-navigation-going-edge-to-edge-812f62e4e83e
-    binding.root.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
-            View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
-            View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+//    binding.root.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
+//            View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
+//            View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
 
     // for input method memory leaks.
     IMMLeaks.fixFocusedViewLeak(application)

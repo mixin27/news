@@ -72,35 +72,35 @@ class SearchViewModel(
     @SuppressLint("DefaultLocale")
     private fun processSearchResult(parameters: String) {
         uiScope.launch {
-            val query = if (parameters.isNotEmpty()) {
-                parameters.split(", ", " ", ",").take(5).map {
-                    "${it.toLowerCase()}*"
-                }.joinToString { " AND " }
-            } else {
-                parameters
-            }
-            val articleRepository = NewsArticlesRepositoryImpl(NewsDatabase.getInstance(application), query = query)
-            val articlesResult = articleRepository.searchArticlesByTitle()
-            val allArticles = articleRepository.allArticles
-
-            val searchArticles = allArticles.value!!.filter {
-                it.url in articlesResult
-            }.map {
-                Searchable.SearchedArticle(it)
-            }
-
-            _searchResults.value = searchArticles.map {
-                SearchResult(
-                    it.articles.id,
-                    it.articles.author,
-                    it.articles.title,
-                    it.articles.description,
-                    it.articles.url,
-                    it.articles.urlToImage,
-                    it.articles.publishedAt,
-                    it.articles.content
-                )
-            }
+//            val query = if (parameters.isNotEmpty()) {
+//                parameters.split(", ", " ", ",").take(5).map {
+//                    "${it.toLowerCase()}*"
+//                }.joinToString { " AND " }
+//            } else {
+//                parameters
+//            }
+//            val articleRepository = NewsArticlesRepositoryImpl(NewsDatabase.getInstance(application), query = query)
+//            // val articlesResult = articleRepository.searchArticlesByTitle()
+//            val allArticles = articleRepository.allArticles
+//
+//            val searchArticles = allArticles.value!!.filter {
+//                it.url in articlesResult
+//            }.map {
+//                Searchable.SearchedArticle(it)
+//            }
+//
+//            _searchResults.value = searchArticles.map {
+//                SearchResult(
+//                    it.articles.id,
+//                    it.articles.author,
+//                    it.articles.title,
+//                    it.articles.description,
+//                    it.articles.url,
+//                    it.articles.urlToImage,
+//                    it.articles.publishedAt,
+//                    it.articles.content
+//                )
+//            }
 
             _isEmpty.value = searchResults.value.isNullOrEmpty()
         }

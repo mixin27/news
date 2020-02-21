@@ -27,7 +27,6 @@ class NewsArticlesRepositoryImpl(
       it.asDomainModel()
     }
 
-
   val allArticles: LiveData<List<NewsArticles>> =
     Transformations.map(database.newsArticleDao.getArticles()) {
       it.asDomainModel()
@@ -40,10 +39,5 @@ class NewsArticlesRepositoryImpl(
           .await()
       database.newsArticleDao.insertAll(newsArticles.asDatabaseModel())
     }
-  }
-
-
-  override suspend fun searchArticlesByTitle(): Set<String> {
-    return database.newsArticleDao.searchByTitle(query).toSet()
   }
 }

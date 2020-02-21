@@ -47,7 +47,7 @@ class NewsSourceFragment : Fragment() {
     val newsSourceViewModel =
       ViewModelProviders.of(this, viewModelFactory)
           .get(NewsSourceViewModel::class.java)
-    binding.newsSourceViewModel = newsSourceViewModel
+    binding.viewModel = newsSourceViewModel
 
     binding.rvSourceLists.adapter = NewsSourceAdapter(NewsSourceAdapter.OnClickListener {
       newsSourceViewModel.displayNewsSourceDetails(it)

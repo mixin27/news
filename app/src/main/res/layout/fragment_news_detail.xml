@@ -15,7 +15,6 @@
   <androidx.core.widget.NestedScrollView
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:paddingBottom="16dp"
       >
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -41,7 +40,7 @@
           android:layout_height="wrap_content"
           android:padding="8dp"
           android:text="@{viewModel.article.title}"
-          android:textAppearance="?attr/textAppearanceHeadline4"
+          android:textAppearance="?attr/textAppearanceHeadline5"
           app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toBottomOf="@+id/imgNews"
@@ -56,7 +55,7 @@
           android:paddingStart="16dp"
           android:paddingTop="8dp"
           android:paddingEnd="8dp"
-          htmlText="@{viewModel.article.author}"
+          app:htmlText="@{viewModel.article.getAuthor}"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toBottomOf="@+id/tvTitle"
           tools:text="John Smith"
@@ -91,6 +90,17 @@
           tools:text="2020-01-16T07:03:53Z"
           />
 
+      <com.norm.news.widget.HtmlTextView
+          android:id="@+id/tv_warning"
+          style="@style/TextAppearance.News.Warning"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/margin_normal"
+          android:padding="@dimen/margin_normal"
+          android:text="@string/str_article_detail_warning"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/tvPublishAt" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

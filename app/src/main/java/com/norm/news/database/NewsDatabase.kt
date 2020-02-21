@@ -13,7 +13,7 @@ import com.norm.news.database.entity.SourceEntity
  * Created by KZYT on 16/01/2020.
  */
 @Database(
-    entities = [SourceEntity::class, NewsArticleEntity::class], version = 5, exportSchema = false
+    entities = [SourceEntity::class, NewsArticleEntity::class], version = 6, exportSchema = false
 )
 abstract class NewsDatabase : RoomDatabase() {
   abstract val newsSourceDao: NewsSourceDao

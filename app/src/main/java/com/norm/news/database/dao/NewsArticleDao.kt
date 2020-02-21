@@ -37,7 +37,4 @@ interface NewsArticleDao {
 
   @Query("SELECT * FROM news_article_table WHERE articleId IN (:id) ORDER BY publishAt DESC")
   fun getAllArticlesBySource(id: String): LiveData<List<NewsArticleEntity>>
-
-  @Query("SELECT url FROM news_article_table WHERE news_article_table MATCH :query")
-  fun searchByTitle(query: String): List<String>
 }

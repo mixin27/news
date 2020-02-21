@@ -1,11 +1,13 @@
 package com.norm.news.widget
 
 import android.content.Context
+import android.graphics.Color
 import android.text.Spanned
 import android.text.style.ClickableSpan
 import android.util.AttributeSet
 import android.view.MotionEvent
 import androidx.appcompat.widget.AppCompatTextView
+import com.norm.news.extensions.isUrl
 
 /**
  * Created by KZYT on 15/02/2020.
