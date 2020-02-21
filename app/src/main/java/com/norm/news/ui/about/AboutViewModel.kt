@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.norm.news.BuildConfig
 
 /**
  * Created by Kyaw Zayar Tun on 2020-01-18.
@@ -11,16 +12,10 @@ import androidx.lifecycle.ViewModel
 class AboutViewModel(
   application: Application
 ) : ViewModel() {
+  val versionCode = BuildConfig.VERSION_CODE
+  val versionName = BuildConfig.VERSION_NAME
+  val buildType = BuildConfig.BUILD_TYPE
+  val applicationId = BuildConfig.APPLICATION_ID
 
-  private val _navigateToLicensePage = MutableLiveData<Int>()
-  val navigateToLicensePage: LiveData<Int>
-    get() = _navigateToLicensePage
-
-  fun displayLicensePage() {
-    _navigateToLicensePage.value = 1
-  }
-
-  fun displayLicensePageComplete() {
-    _navigateToLicensePage.value = 0
-  }
+  val buildVersionNumber = "Version $versionName-$buildType"
 }

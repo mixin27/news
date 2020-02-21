@@ -49,7 +49,7 @@
           tools:text="us"
           />
 
-      <TextView
+      <com.norm.news.widget.HtmlTextView
           android:id="@+id/tv_source_description"
           style="?attr/textAppearanceSubtitle1"
           android:layout_width="0dp"
@@ -58,7 +58,7 @@
           android:paddingTop="16dp"
           android:paddingEnd="16dp"
           android:paddingBottom="16dp"
-          android:text="@{source.description}"
+          app:htmlText="@{source.description}"
           app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toBottomOf="@+id/tv_source_name"

@@ -44,7 +44,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/iv_article"
                 tools:text="Harry on first royal duty since talks with Queen" />
 
-            <TextView
+            <com.norm.news.widget.HtmlTextView
                 android:id="@+id/tv_description"
                 style="@style/TextAppearance.Subtitle1"
                 android:layout_width="0dp"
@@ -53,13 +53,13 @@
                 android:paddingTop="16dp"
                 android:paddingEnd="16dp"
                 android:paddingBottom="16dp"
-                android:text="@{article.description}"
+                app:htmlText="@{article.description}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_title"
                 tools:text="@string/lorem_ipsum" />
 
-            <TextView
+            <com.norm.news.widget.HtmlTextView
                 android:id="@+id/tv_author"
                 style="@style/TextAppearance.Author"
                 android:layout_width="0dp"
@@ -67,7 +67,7 @@
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
                 android:paddingBottom="16dp"
-                android:text="@{article.author}"
+                app:htmlText="@{article.getAuthor}"
                 app:layout_constraintEnd_toStartOf="@+id/tv_publish_at"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_description"

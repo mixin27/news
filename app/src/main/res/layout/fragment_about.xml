@@ -71,30 +71,51 @@
           />
 
       <Button
+          android:id="@+id/tvTermsOfService"
+          style="@style/Widget.News.AboutButtons"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:padding="8dp"
+          android:text="@string/str_terms_of_service"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="@+id/view"
+          app:layout_constraintTop_toBottomOf="@+id/view" />
+
+      <Button
+          android:id="@+id/tvPrivacyPolicy"
+          style="@style/Widget.News.AboutButtons"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:padding="8dp"
+          android:text="@string/str_privacy_policy"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/tvTermsOfService" />
+
+      <Button
           android:id="@+id/tvLicense"
           style="@style/Widget.News.AboutButtons"
           android:layout_width="0dp"
           android:layout_height="wrap_content"
-          android:layout_marginTop="16dp"
-          android:padding="16dp"
+          android:padding="8dp"
           android:text="@string/str_license"
           app:dialogTitle="@{@string/str_oss_licenses}"
           app:fileLink="@{@string/oss_file}"
           app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintStart_toStartOf="@+id/view"
-          app:layout_constraintTop_toBottomOf="@+id/view"
-          />
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/tvPrivacyPolicy" />
 
-      <View
-          android:id="@+id/view1"
+      <TextView
+          android:id="@+id/tvAppVersion"
+          style="@style/TextAppearance.News.SettingsSwitch"
           android:layout_width="0dp"
-          android:layout_height="1dp"
-          android:layout_marginTop="16dp"
-          android:background="@color/primaryColor"
+          android:layout_height="wrap_content"
+          android:padding="8dp"
+          android:text="@{viewModel.buildVersionNumber}"
+          app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toBottomOf="@+id/tvLicense"
-          />
-
+          tools:text="Version X.X, build X"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

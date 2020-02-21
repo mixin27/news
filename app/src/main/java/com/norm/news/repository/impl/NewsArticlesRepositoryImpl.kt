@@ -8,6 +8,7 @@ import com.norm.news.domain.NewsArticles
 import com.norm.news.network.NewsApiService
 import com.norm.news.network.model.asDatabaseModel
 import com.norm.news.repository.NewsArticleRepository
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import timber.log.Timber
@@ -17,11 +18,17 @@ import timber.log.Timber
  */
 class NewsArticlesRepositoryImpl(
   private val database: NewsDatabase,
-  private val sourceId: String
+  private val sourceId: String = "",
+  private val query: String = ""
 ) : NewsArticleRepository {
 
   val articles: LiveData<List<NewsArticles>> =
     Transformations.map(database.newsArticleDao.getAllArticlesBySource(sourceId)) {
+      it.asDomainModel()
+    }
+
+  val allArticles: LiveData<List<NewsArticles>> =
+    Transformations.map(database.newsArticleDao.getArticles()) {
       it.asDomainModel()
     }
 

@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import com.norm.news.database.NewsDatabase
 import com.norm.news.domain.NewsArticles
 import com.norm.news.network.ApiStatus
+import com.norm.news.network.Event
 import com.norm.news.network.model.Article
 import com.norm.news.repository.impl.NewsArticlesRepositoryImpl
 import kotlinx.coroutines.CoroutineScope
@@ -37,6 +38,9 @@ class NewsViewModel(
   private val _navigateToSelectedItem = MutableLiveData<NewsArticles>()
   val navigateToSelectedItem: LiveData<NewsArticles>
     get() = _navigateToSelectedItem
+
+  private val _navigateToSearchAction = MutableLiveData<Event<Unit>>()
+  val navigateToSearchAction: LiveData<Event<Unit>> = _navigateToSearchAction
 
   init {
     getArticlesFromNetwork()
@@ -79,5 +83,9 @@ class NewsViewModel(
    */
   fun displayNewsSourceDetailsComplete() {
     _navigateToSelectedItem.value = null
+  }
+
+  fun onSearchClick() {
+    _navigateToSearchAction.value = Event(Unit)
   }
 }

@@ -46,3 +46,7 @@ fun String.smartTruncate(length: Int): String {
   }
   return builder.toString()
 }
+
+fun String.isUrl(): Boolean {
+  return this.contains(Regex("\\b(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]"))
+}

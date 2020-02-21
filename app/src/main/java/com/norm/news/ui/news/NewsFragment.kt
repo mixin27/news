@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.norm.news.R
 import com.norm.news.databinding.FragmentNewsBinding
+import com.norm.news.network.EventObserver
 import com.norm.news.utils.IMMLeaks
 
 /**
@@ -46,7 +47,7 @@ class NewsFragment : Fragment() {
     val newsViewModel =
       ViewModelProviders.of(this, newsViewModelFactory)
           .get(NewsViewModel::class.java)
-    binding.newsViewModel = newsViewModel
+    binding.viewModel = newsViewModel
 
     binding.rvNewsLists.adapter = ArticleAdapter(ArticleAdapter.OnClickListener {
       newsViewModel.displayNewsSourceDetails(it)
@@ -62,7 +63,16 @@ class NewsFragment : Fragment() {
       }
     })
 
+//    newsViewModel.navigateToSearchAction.observe(viewLifecycleOwner, EventObserver {
+//      openSearch()
+//    })
+
     return binding.root
+  }
+
+  private fun openSearch() {
+    val action = NewsFragmentDirections.actionNewsFragmentToDestSearch()
+    findNavController().navigate(action)
   }
 
   override fun onCreateOptionsMenu(

@@ -7,7 +7,7 @@
 
   <data>
     <variable
-        name="newsViewModel"
+        name="viewModel"
         type="com.norm.news.ui.news.NewsViewModel"
         />
   </data>
@@ -25,14 +25,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:loadingVisibility="@{newsViewModel.status}"
+        app:loadingVisibility="@{viewModel.status}"
         />
 
     <ImageView
         android:id="@+id/status_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:imgVisibility="@{newsViewModel.status}"
+        app:imgVisibility="@{viewModel.status}"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -44,7 +44,7 @@
         android:contentDescription="@string/str_network_error_placeholder_image"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:articleListData="@{newsViewModel.articles}"
+        app:articleListData="@{viewModel.articles}"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

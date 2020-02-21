@@ -1,6 +1,7 @@
 package com.norm.news.database.dao
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -22,18 +23,18 @@ interface NewsArticleDao {
   @Update
   fun update(article: NewsArticleEntity)
 
-  @Query("SELECT * from news_article_table WHERE id = :id")
-  fun get(id: Long): NewsArticleEntity?
+  @Query("SELECT * FROM news_article_table")
+  fun getArticles(): LiveData<List<NewsArticleEntity>>
+
+  @Query("SELECT * from news_article_table WHERE articleId = :id")
+  fun get(id: String): NewsArticleEntity?
 
   @Query("DELETE FROM news_article_table")
   fun clear()
 
-  @Query("SELECT * FROM news_article_table ORDER BY publishAt DESC LIMIT 1")
-  fun getArticle(): NewsArticleEntity?
-
   @Query("SELECT * FROM news_article_table ORDER BY publishAt DESC")
-  fun getAllArticles(): LiveData<List<NewsArticleEntity>>
+  fun getAllArticlesByDesc(): LiveData<List<NewsArticleEntity>>
 
-  @Query("SELECT * FROM news_article_table WHERE id IN (:id) ORDER BY publishAt DESC")
+  @Query("SELECT * FROM news_article_table WHERE articleId IN (:id) ORDER BY publishAt DESC")
   fun getAllArticlesBySource(id: String): LiveData<List<NewsArticleEntity>>
 }

@@ -1,26 +1,31 @@
 <resources>
-  <string name="app_name">News</string>
+    <string name="app_name">News</string>
 
-  <!-- TODO: Remove or change this placeholder text -->
-  <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
-  <string name="str_about">About</string>
+    <string name="str_about">About</string>
+    <string name="str_news_articles">Articles</string>
 
-  <string name="lorem_ipsum">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</string>
-  <string name="str_license">License</string>
+    <string name="lorem_ipsum">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</string>
+    <string name="str_license">Open source licenses</string>
 
-  <string name="oss_file" translatable="false">file:///android_asset/licenses.html</string>
-  <string name="str_oss_licenses">OSS License</string>
+    <string name="oss_file" translatable="false">file:///android_asset/licenses.html</string>
+    <string name="str_oss_licenses">OSS License</string>
 
-  <string name="about_app">
+    <string name="about_app">
         News application is an app which show news source lists and articles of each source.
         You can see news sources, articles and article details. All of the news data(information) are powered by
         https://newsapi.org/ and thanks for free to developer and permit to develop open source projects. I hope
         this app may help you something else.
   </string>
 
-  <string name="str_search">Search</string>
-  <string name="str_search_hint">Type your word</string>
-  <string name="str_network_error_placeholder_image">Network Error placeholder image</string>
-  <string name="str_news_image">News image</string>
+    <string name="str_search">Search</string>
+    <string name="str_search_hint">Type your word</string>
+    <string name="str_network_error_placeholder_image">Network Error placeholder image</string>
+    <string name="str_news_image">News image</string>
+    <string name="str_terms_of_service">Terms of service</string>
+    <string name="str_privacy_policy">Privacy policy</string>
+    <string name="search_schedule_no_results" translation_description="Text that is shown if there are no search results">No results found</string>
+    <string name="str_article_detail_warning">Article content details are limited by <a href="https://newsapi.org">newsapi.org</a>.</string>
 </resources>
