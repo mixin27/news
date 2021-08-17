@@ -13,10 +13,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.norm.news.R
 import com.norm.news.adapters.NewsAdapter
 import com.norm.news.databinding.FragmentNewsBinding
+import com.norm.news.util.NetworkListener
 import com.norm.news.util.NetworkResult
 import com.norm.news.viewmodels.MainViewModel
 import com.norm.news.viewmodels.NewsViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -29,6 +31,8 @@ class NewsFragment : Fragment() {
     private val newsViewModel: NewsViewModel by viewModels()
     private val mAdapter by lazy { NewsAdapter() }
 
+    private lateinit var networkListener: NetworkListener
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -40,6 +44,18 @@ class NewsFragment : Fragment() {
 
         setupRecyclerView()
         loadNews()
+
+        // network listener
+        lifecycleScope.launchWhenStarted {
+            networkListener = NetworkListener()
+            networkListener.checkNetworkAvailability(requireContext())
+                .collect { status ->
+                    Log.d("NetworkListener", "$status")
+                    newsViewModel.networkStatus = status
+                    newsViewModel.showNetworkStatus()
+                    // loadNews()
+                }
+        }
 
         return binding.root
     }
