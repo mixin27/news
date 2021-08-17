@@ -9,6 +9,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.norm.news.R
 import com.norm.news.adapters.NewsAdapter
 import com.norm.news.databinding.FragmentNewsBinding
@@ -22,7 +23,7 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class NewsFragment : Fragment(), SearchView.OnQueryTextListener {
+class NewsFragment : Fragment(), SearchView.OnQueryTextListener, SwipeRefreshLayout.OnRefreshListener {
 
     private var _binding: FragmentNewsBinding? = null
     private val binding get() = _binding!!
@@ -45,6 +46,9 @@ class NewsFragment : Fragment(), SearchView.OnQueryTextListener {
         setHasOptionsMenu(true)
 
         setupRecyclerView()
+
+        binding.newsSwipeRefreshLayout.setOnRefreshListener(this)
+
         loadNews()
 
         // network listener
@@ -116,12 +120,14 @@ class NewsFragment : Fragment(), SearchView.OnQueryTextListener {
             when (response) {
                 is NetworkResult.Success -> {
                     hideShimmerEffect()
+                    hideSwipeRefresh()
                     response.data?.let { news ->
                         mAdapter.setData(news)
                     }
                 }
                 is NetworkResult.Error -> {
                     hideShimmerEffect()
+                    hideSwipeRefresh()
                     loadDataFromCache()
                     Toast.makeText(
                         requireContext(),
@@ -131,6 +137,7 @@ class NewsFragment : Fragment(), SearchView.OnQueryTextListener {
                 }
                 is NetworkResult.Loading -> {
                     showShimmerEffect()
+                    showSwipeRefresh()
                 }
             }
         })
@@ -171,6 +178,18 @@ class NewsFragment : Fragment(), SearchView.OnQueryTextListener {
                 }
             })
         }
+    }
+
+    override fun onRefresh() {
+        requestApiData()
+    }
+
+    private fun showSwipeRefresh() {
+        binding.newsSwipeRefreshLayout.isRefreshing = true
+    }
+
+    private fun hideSwipeRefresh() {
+        binding.newsSwipeRefreshLayout.isRefreshing = false
     }
 
     /** show shimmer recycler effect */
