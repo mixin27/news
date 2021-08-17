@@ -26,6 +26,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    buildFeatures {
+        viewBinding true
+        dataBinding true
+    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -40,6 +44,7 @@ dependencies {
     implementation Libs.core_ktx
     implementation Libs.appcompat
     implementation Libs.constraint_layout
+    implementation Libs.legacy_support_v4
     testImplementation Libs.junit
     androidTestImplementation Libs.junit_android
     androidTestImplementation Libs.expresso
