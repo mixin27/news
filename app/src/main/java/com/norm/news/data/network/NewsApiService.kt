@@ -11,18 +11,18 @@ import retrofit2.http.QueryMap
  */
 interface NewsApiService {
 
-    @GET("/top-headlines")
-    fun getNews(
+    @GET("top-headlines")
+    suspend fun getNews(
         @QueryMap queries: Map<String, String>
     ): Response<News>
 
-    @GET("/everything")
-    fun searchNews(
+    @GET("everything")
+    suspend fun searchNews(
         @QueryMap searchQuery: Map<String, String>
     ): Response<News>
 
-    @GET("/top-headlines/sources")
-    fun getSources(
+    @GET("top-headlines/sources")
+    suspend fun getSources(
         @QueryMap queries: Map<String, String>
     ): Response<Sources>
 }
