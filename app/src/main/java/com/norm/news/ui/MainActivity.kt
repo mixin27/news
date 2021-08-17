@@ -1,4 +1,4 @@
-package com.norm.news
+package com.norm.news.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,6 +7,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.norm.news.R
 import com.norm.news.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

@@ -7,17 +7,17 @@
 
     <fragment
         android:id="@+id/newsFragment"
-        android:name="com.norm.news.NewsFragment"
+        android:name="com.norm.news.ui.fragments.news.NewsFragment"
         android:label="News"
         tools:layout="@layout/fragment_news" />
     <fragment
         android:id="@+id/sourcesFragment"
-        android:name="com.norm.news.SourcesFragment"
+        android:name="com.norm.news.ui.fragments.sources.SourcesFragment"
         android:label="Sources"
         tools:layout="@layout/fragment_sources" />
     <fragment
         android:id="@+id/articleSavedFragment"
-        android:name="com.norm.news.ArticleSavedFragment"
+        android:name="com.norm.news.ui.fragments.articlesaved.ArticleSavedFragment"
         android:label="Saved"
         tools:layout="@layout/fragment_article_saved" />
 </navigation>
