@@ -11,6 +11,7 @@
         <entry key="app/src/main/res/layout/news_row_layout.xml" value="0.3351851851851852" />
         <entry key="app/src/main/res/layout/placeholder_news_row_layout.xml" value="0.25" />
         <entry key="app/src/main/res/menu/home_nav_menu.xml" value="0.2578125" />
+        <entry key="app/src/main/res/menu/news_menu.xml" value="0.2578125" />
       </map>
     </option>
   </component>

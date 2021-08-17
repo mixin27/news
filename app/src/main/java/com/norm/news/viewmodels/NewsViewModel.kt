@@ -11,6 +11,7 @@ import com.norm.news.util.Constants.Companion.DEFAULT_SORT_BY
 import com.norm.news.util.Constants.Companion.QUERY_API_KEY
 import com.norm.news.util.Constants.Companion.QUERY_CATEGORY
 import com.norm.news.util.Constants.Companion.QUERY_PAGE
+import com.norm.news.util.Constants.Companion.QUERY_Q
 import com.norm.news.util.Constants.Companion.QUERY_SORT_BY
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -34,6 +35,19 @@ class NewsViewModel @Inject constructor(
         queries[QUERY_API_KEY] = API_KEY
         queries[QUERY_CATEGORY] = DEFAULT_CATEGORY
         queries[QUERY_PAGE] = DEFAULT_PAGE
+        queries[QUERY_SORT_BY] = DEFAULT_SORT_BY
+
+        return queries
+    }
+
+    /**
+     * queries preparation to search
+     */
+    fun applySearchQueries(searchString: String): HashMap<String, String> {
+        val queries: HashMap<String, String> = HashMap()
+
+        queries[QUERY_API_KEY] = API_KEY
+        queries[QUERY_Q] = searchString
         queries[QUERY_SORT_BY] = DEFAULT_SORT_BY
 
         return queries

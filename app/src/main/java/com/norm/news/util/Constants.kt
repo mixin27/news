@@ -14,6 +14,7 @@ class Constants {
 
         // API queries
         const val QUERY_API_KEY = "apikey"
+        const val QUERY_Q = "q"
         const val QUERY_COUNTRY = "country"
         const val QUERY_TO = "to"
         const val QUERY_FROM = "from"
