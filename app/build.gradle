@@ -1,0 +1,103 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'dagger.hilt.android.plugin'
+}
+
+android {
+    compileSdk Versions.COMPILE_SDK
+
+    defaultConfig {
+        applicationId "com.norm.news"
+        minSdk Versions.MIN_SDK
+        targetSdk Versions.TARGET_SDK
+        versionCode Versions.VERSION_CODE
+        versionName Versions.VERSION_NAME
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = Versions.JVM_TARGET
+    }
+}
+
+dependencies {
+
+    implementation Libs.core_ktx
+    implementation Libs.appcompat
+    implementation Libs.constraint_layout
+    testImplementation Libs.junit
+    androidTestImplementation Libs.junit_android
+    androidTestImplementation Libs.expresso
+
+    // Coordinator layout
+    implementation Libs.coordinator_layout
+
+    // Material components
+    implementation Libs.material
+
+    // Navigation components
+    implementation Libs.navigation_fragment
+    implementation Libs.navigation_ui
+
+    // Room
+    implementation Libs.room_runtime
+    kapt Libs.room_compiler
+    implementation Libs.room_ktx
+    androidTestImplementation Libs.room_testing
+
+    // Data binding
+    kapt Libs.data_binding_compiler
+    kapt Libs.data_binding_common
+
+    // Datastore
+    implementation Libs.datastore_prefs
+
+    // Recycler View
+    implementation Libs.recycler_view
+
+    // Retrofit
+    implementation Libs.retrofit
+    implementation Libs.retrofit_gson
+
+    // Dagger - Hilt
+    implementation Libs.hilt
+    kapt Libs.hilt_compiler
+
+    // Coroutines
+    implementation Libs.coroutine_core
+    implementation Libs.coroutine_android
+
+    // Lifecycle
+    implementation Libs.life_cycle_extensions
+    implementation Libs.life_cycle_livedata
+    implementation Libs.life_cycle_runtime
+    implementation Libs.life_cycle_viewmodel
+
+    // Coil
+    implementation Libs.coil
+
+    // Gson
+    implementation Libs.gson
+
+    // Shimmer
+    implementation Libs.shimmer
+    implementation Libs.shimmer_recycler
+
+    // Jsoup
+    implementation Libs.jsoup
+}
