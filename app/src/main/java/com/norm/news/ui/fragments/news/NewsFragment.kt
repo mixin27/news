@@ -15,6 +15,7 @@ import com.norm.news.adapters.NewsAdapter
 import com.norm.news.databinding.FragmentNewsBinding
 import com.norm.news.util.NetworkListener
 import com.norm.news.util.NetworkResult
+import com.norm.news.util.observeOnce
 import com.norm.news.viewmodels.MainViewModel
 import com.norm.news.viewmodels.NewsViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -53,7 +54,7 @@ class NewsFragment : Fragment() {
                     Log.d("NetworkListener", "$status")
                     newsViewModel.networkStatus = status
                     newsViewModel.showNetworkStatus()
-                    // loadNews()
+                    loadNews()
                 }
         }
 
@@ -70,9 +71,16 @@ class NewsFragment : Fragment() {
      */
     private fun loadNews() {
         lifecycleScope.launch {
-            // todo: load data from cache
+            mainViewMode.readNews.observeOnce(viewLifecycleOwner, { rows ->
+                if (rows.isNotEmpty()) {
+                    Log.d("NewsFragment", "readNews() called!")
 
-            requestApiData()
+                    mAdapter.setData(rows[0].news)
+                    hideShimmerEffect()
+                } else {
+                    requestApiData()
+                }
+            })
         }
     }
 
@@ -93,7 +101,7 @@ class NewsFragment : Fragment() {
                 }
                 is NetworkResult.Error -> {
                     hideShimmerEffect()
-                    // todo: load data from cache
+                    loadDataFromCache()
                     Toast.makeText(
                         requireContext(),
                         response.message.toString(),
@@ -105,6 +113,16 @@ class NewsFragment : Fragment() {
                 }
             }
         })
+    }
+
+    private fun loadDataFromCache() {
+        lifecycleScope.launch {
+            mainViewMode.readNews.observeOnce(viewLifecycleOwner, { rows ->
+                if (rows.isNotEmpty()) {
+                    mAdapter.setData(rows[0].news)
+                }
+            })
+        }
     }
 
     /** show shimmer recycler effect */

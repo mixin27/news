@@ -13,7 +13,7 @@ class NewsRowBinding {
 
         @BindingAdapter("loadImageFromUrl")
         @JvmStatic
-        fun loadImageFromUrl(imageView: ImageView, url: String) {
+        fun loadImageFromUrl(imageView: ImageView, url: String?) {
             imageView.load(url) {
                 crossfade(600)
                 error(R.drawable.error_placeholder_image)

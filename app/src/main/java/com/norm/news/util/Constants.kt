@@ -8,6 +8,10 @@ class Constants {
         const val BASE_URL = "https://newsapi.org/v2/"
         const val API_KEY = "94127380fdfe4b268916724a8da21e63"
 
+        // Database
+        const val DB_NAME = "news_db"
+        const val NEWS_TABLE = "news"
+
         // API queries
         const val QUERY_API_KEY = "apikey"
         const val QUERY_COUNTRY = "country"
@@ -15,5 +19,11 @@ class Constants {
         const val QUERY_FROM = "from"
         const val QUERY_LANGUAGE = "language"
         const val QUERY_CATEGORY = "category"
+        const val QUERY_PAGE = "page"
+        const val QUERY_SORT_BY = "sortBy"
+
+        const val DEFAULT_CATEGORY = "business"
+        const val DEFAULT_PAGE = "1"
+        const val DEFAULT_SORT_BY = "popularity"
     }
 }
