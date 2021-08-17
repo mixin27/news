@@ -74,7 +74,7 @@
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/title_textView"
-                    app:layout_constraintTop_toBottomOf="@+id/title_textView" />
+                    app:layout_constraintTop_toBottomOf="@+id/publishedAt_textView" />
 
                 <ImageView
                     android:id="@+id/source_imageView"
@@ -116,6 +116,20 @@
                     app:layout_constraintBottom_toBottomOf="@+id/author_imageView"
                     app:layout_constraintStart_toEndOf="@+id/author_imageView"
                     app:layout_constraintTop_toTopOf="@+id/author_imageView" />
+
+                <TextView
+                    android:id="@+id/publishedAt_textView"
+                    setPublishedAt="@{article.publishedAt}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/_3_day_ago"
+                    android:textColor="@color/darkGray"
+                    android:alpha="0.7"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="@+id/title_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/title_textView" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -3,6 +3,8 @@ package com.norm.news.util
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
+import org.threeten.bp.ZonedDateTime
+import org.threeten.bp.format.DateTimeFormatter
 
 /**
  * Created by Kyaw Zayar Tun on 8/17/21.
@@ -16,4 +18,17 @@ fun <T> LiveData<T>.observeOnce(lifecycleOwner: LifecycleOwner, observer: Observ
             observer.onChanged(t)
         }
     })
+}
+
+fun String.toZoneDateTime(): ZonedDateTime {
+    return ZonedDateTime.parse(this)
+}
+
+fun ZonedDateTime.toMilliSecond(): Long {
+    return this.toInstant().toEpochMilli()
+}
+
+fun String.toFormattedDateString(pattern: String): String {
+    val df = DateTimeFormatter.ofPattern(pattern)
+    return this.toZoneDateTime().format(df)
 }

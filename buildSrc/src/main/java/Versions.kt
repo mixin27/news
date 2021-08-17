@@ -43,4 +43,5 @@ object Versions {
     const val SHIMMER = "0.5.0"
     const val SHIMMER_RECYCLER = "0.4.0"
     const val JSOUP = "1.13.1"
+    const val THREETENBP = "1.3.6"
 }

@@ -12,6 +12,7 @@ import com.norm.news.util.Constants.Companion.QUERY_API_KEY
 import com.norm.news.util.Constants.Companion.QUERY_CATEGORY
 import com.norm.news.util.Constants.Companion.QUERY_PAGE
 import com.norm.news.util.Constants.Companion.QUERY_Q
+import com.norm.news.util.Constants.Companion.QUERY_Q_IN_TITLE
 import com.norm.news.util.Constants.Companion.QUERY_SORT_BY
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -47,8 +48,9 @@ class NewsViewModel @Inject constructor(
         val queries: HashMap<String, String> = HashMap()
 
         queries[QUERY_API_KEY] = API_KEY
+        queries[QUERY_Q_IN_TITLE] = searchString
         queries[QUERY_Q] = searchString
-        queries[QUERY_SORT_BY] = DEFAULT_SORT_BY
+        queries[QUERY_SORT_BY] = "relevancy"
 
         return queries
     }

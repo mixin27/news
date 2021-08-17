@@ -57,4 +57,6 @@ object Libs {
     const val shimmer = "com.facebook.shimmer:shimmer:${Versions.SHIMMER}"
     const val shimmer_recycler = "com.todkars:shimmer-recyclerview:${Versions.SHIMMER_RECYCLER}"
     const val jsoup = "org.jsoup:jsoup:${Versions.JSOUP}"
+
+    const val threeten_bp = "org.threeten:threetenbp:${Versions.THREETENBP}"
 }

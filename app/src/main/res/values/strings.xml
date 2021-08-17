@@ -16,4 +16,5 @@
     <string name="no_internet_connection">No Internet Connection</string>
     <string name="back_online_message">We are back online</string>
     <string name="search">Search</string>
+    <string name="_3_day_ago">3 day ago</string>
 </resources>

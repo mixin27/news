@@ -105,4 +105,7 @@ dependencies {
 
     // Jsoup
     implementation Libs.jsoup
+
+    // Threeten bp
+    implementation Libs.threeten_bp
 }
