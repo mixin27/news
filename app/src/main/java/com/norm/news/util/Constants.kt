@@ -21,15 +21,17 @@ class Constants {
         const val QUERY_FROM = "from"
         const val QUERY_LANGUAGE = "language"
         const val QUERY_CATEGORY = "category"
-        const val QUERY_PAGE = "page"
         const val QUERY_SORT_BY = "sortBy"
 
         const val DEFAULT_CATEGORY = "business"
-        const val DEFAULT_PAGE = "1"
         const val DEFAULT_SORT_BY = "popularity"
 
         // DataStore preferences
         const val PREFS_NAME = "prefs_news"
         const val PREFS_BACK_ONLINE = "back_online"
+        const val PREFS_CATEGORY = "category"
+        const val PREFS_CATEGORY_ID = "category_id"
+        const val PREFS_SORT_BY = "sortBy"
+        const val PREFS_SORT_BY_ID = "sortBy_id"
     }
 }

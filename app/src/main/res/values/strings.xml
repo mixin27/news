@@ -17,4 +17,17 @@
     <string name="back_online_message">We are back online</string>
     <string name="search">Search</string>
     <string name="_3_day_ago">3 day ago</string>
+    <string name="category">Category</string>
+    <string name="business">business</string>
+    <string name="entertainment">entertainment</string>
+    <string name="general">general</string>
+    <string name="health">health</string>
+    <string name="science">science</string>
+    <string name="sports">sports</string>
+    <string name="technology">technology</string>
+    <string name="sort_by">Sort By</string>
+    <string name="popularity">popularity</string>
+    <string name="relevancy">relevancy</string>
+    <string name="publishedat">publishedAt</string>
+    <string name="apply">Apply</string>
 </resources>

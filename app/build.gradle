@@ -45,6 +45,7 @@ dependencies {
     implementation Libs.appcompat
     implementation Libs.constraint_layout
     implementation Libs.legacy_support_v4
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation Libs.junit
     androidTestImplementation Libs.junit_android
     androidTestImplementation Libs.expresso

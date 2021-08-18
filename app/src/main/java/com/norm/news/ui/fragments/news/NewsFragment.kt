@@ -8,6 +8,8 @@ import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.norm.news.R
@@ -23,10 +25,13 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class NewsFragment : Fragment(), SearchView.OnQueryTextListener, SwipeRefreshLayout.OnRefreshListener {
+class NewsFragment : Fragment(), SearchView.OnQueryTextListener,
+    SwipeRefreshLayout.OnRefreshListener {
 
     private var _binding: FragmentNewsBinding? = null
     private val binding get() = _binding!!
+
+    private val args by navArgs<NewsFragmentArgs>()
 
     private val mainViewMode: MainViewModel by viewModels()
     private val newsViewModel: NewsViewModel by viewModels()
@@ -67,6 +72,15 @@ class NewsFragment : Fragment(), SearchView.OnQueryTextListener, SwipeRefreshLay
                 }
         }
 
+        binding.filterNewsFab.setOnClickListener {
+            if (newsViewModel.networkStatus) {
+                findNavController()
+                    .navigate(R.id.action_newsFragment_to_newsFilterBottomSheetFragment)
+            } else {
+                newsViewModel.showNetworkStatus()
+            }
+        }
+
         return binding.root
     }
 
@@ -101,7 +115,7 @@ class NewsFragment : Fragment(), SearchView.OnQueryTextListener, SwipeRefreshLay
     private fun loadNews() {
         lifecycleScope.launch {
             mainViewMode.readNews.observeOnce(viewLifecycleOwner, { rows ->
-                if (rows.isNotEmpty()) {
+                if (rows.isNotEmpty() && !args.backFromFilterSheet) {
                     Log.d("NewsFragment", "readNews() called!")
 
                     mAdapter.setData(rows[0].news)
@@ -128,6 +142,9 @@ class NewsFragment : Fragment(), SearchView.OnQueryTextListener, SwipeRefreshLay
                     response.data?.let { news ->
                         mAdapter.setData(news)
                     }
+
+                    // save filter types to datastore
+                    // newsViewModel.saveFilterTypes()
                 }
                 is NetworkResult.Error -> {
                     hideShimmerEffect()

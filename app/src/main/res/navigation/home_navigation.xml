@@ -9,7 +9,15 @@
         android:id="@+id/newsFragment"
         android:name="com.norm.news.ui.fragments.news.NewsFragment"
         android:label="News"
-        tools:layout="@layout/fragment_news" />
+        tools:layout="@layout/fragment_news" >
+        <action
+            android:id="@+id/action_newsFragment_to_newsFilterBottomSheetFragment"
+            app:destination="@id/newsFilterBottomSheetFragment" />
+        <argument
+            android:name="backFromFilterSheet"
+            app:argType="boolean"
+            android:defaultValue="false" />
+    </fragment>
     <fragment
         android:id="@+id/sourcesFragment"
         android:name="com.norm.news.ui.fragments.sources.SourcesFragment"
@@ -20,4 +28,15 @@
         android:name="com.norm.news.ui.fragments.articlesaved.ArticleSavedFragment"
         android:label="Saved"
         tools:layout="@layout/fragment_article_saved" />
+    <dialog
+        android:id="@+id/newsFilterBottomSheetFragment"
+        android:name="com.norm.news.ui.fragments.news.bottomsheet.NewsFilterBottomSheetFragment"
+        android:label="Filter News"
+        tools:layout="@layout/fragment_news_filter_bottom_sheet">
+        <action
+            android:id="@+id/action_newsFilterBottomSheetFragment_to_newsFragment"
+            app:destination="@id/newsFragment"
+            app:popUpTo="@id/newsFragment"
+            app:popUpToInclusive="true" />
+    </dialog>
 </navigation>
