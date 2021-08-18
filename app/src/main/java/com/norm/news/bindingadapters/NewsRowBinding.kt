@@ -1,10 +1,15 @@
 package com.norm.news.bindingadapters
 
+import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.BindingAdapter
+import androidx.navigation.findNavController
 import coil.load
 import com.norm.news.R
+import com.norm.news.models.Article
+import com.norm.news.ui.fragments.news.NewsFragmentDirections
 import com.norm.news.util.toFormattedDateString
 
 /**
@@ -12,6 +17,21 @@ import com.norm.news.util.toFormattedDateString
  */
 class NewsRowBinding {
     companion object {
+
+        @BindingAdapter("onNewsClickListener")
+        @JvmStatic
+        fun onNewsClick(newsRowLayout: ConstraintLayout, article: Article) {
+            newsRowLayout.setOnClickListener {
+                Log.d("onNewsClick", "called!")
+                try {
+                    val action =
+                        NewsFragmentDirections.actionNewsFragmentToNewsDetailsActivity(article)
+                    newsRowLayout.findNavController().navigate(action)
+                } catch (e: Exception) {
+                    Log.d("onNewsClick", e.toString())
+                }
+            }
+        }
 
         @BindingAdapter("loadImageFromUrl")
         @JvmStatic

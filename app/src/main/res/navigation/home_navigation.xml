@@ -17,6 +17,9 @@
             android:name="backFromFilterSheet"
             app:argType="boolean"
             android:defaultValue="false" />
+        <action
+            android:id="@+id/action_newsFragment_to_newsDetailsActivity"
+            app:destination="@id/newsDetailsActivity" />
     </fragment>
     <fragment
         android:id="@+id/sourcesFragment"
@@ -26,7 +29,7 @@
     <fragment
         android:id="@+id/articleSavedFragment"
         android:name="com.norm.news.ui.fragments.articlesaved.ArticleSavedFragment"
-        android:label="Saved"
+        android:label="Saved Articles"
         tools:layout="@layout/fragment_article_saved" />
     <dialog
         android:id="@+id/newsFilterBottomSheetFragment"
@@ -39,4 +42,13 @@
             app:popUpTo="@id/newsFragment"
             app:popUpToInclusive="true" />
     </dialog>
+    <activity
+        android:id="@+id/newsDetailsActivity"
+        android:name="com.norm.news.ui.NewsDetailsActivity"
+        android:label="Details"
+        tools:layout="@layout/activity_news_details" >
+        <argument
+            android:name="article"
+            app:argType="com.norm.news.models.Article" />
+    </activity>
 </navigation>
