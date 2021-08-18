@@ -3,7 +3,10 @@ package com.norm.news.viewmodels
 import android.app.Application
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.asLiveData
+import androidx.lifecycle.viewModelScope
 import com.norm.news.R
+import com.norm.news.data.DataStoreRepository
 import com.norm.news.util.Constants.Companion.API_KEY
 import com.norm.news.util.Constants.Companion.DEFAULT_CATEGORY
 import com.norm.news.util.Constants.Companion.DEFAULT_PAGE
@@ -15,6 +18,8 @@ import com.norm.news.util.Constants.Companion.QUERY_Q
 import com.norm.news.util.Constants.Companion.QUERY_Q_IN_TITLE
 import com.norm.news.util.Constants.Companion.QUERY_SORT_BY
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 /**
@@ -22,10 +27,19 @@ import javax.inject.Inject
  */
 @HiltViewModel
 class NewsViewModel @Inject constructor(
-    application: Application
+    application: Application,
+    private val dataStoreRepository: DataStoreRepository
 ) : AndroidViewModel(application) {
 
     var networkStatus = false
+    var backOnline = false
+
+    val readBackOnline = dataStoreRepository.readBackOnline.asLiveData()
+
+    private fun saveBackOnline(status: Boolean) =
+        viewModelScope.launch(Dispatchers.IO) {
+            dataStoreRepository.saveBackOnline(status)
+        }
 
     /**
      * queries preparation to apply on news api request
@@ -65,12 +79,16 @@ class NewsViewModel @Inject constructor(
                 R.string.no_internet_connection,
                 Toast.LENGTH_SHORT
             ).show()
+            saveBackOnline(true)
         } else if (networkStatus) {
-            Toast.makeText(
-                getApplication(),
-                R.string.back_online_message,
-                Toast.LENGTH_SHORT
-            ).show()
+            if (backOnline) {
+                Toast.makeText(
+                    getApplication(),
+                    R.string.back_online_message,
+                    Toast.LENGTH_SHORT
+                ).show()
+                saveBackOnline(false)
+            }
         }
     }
 

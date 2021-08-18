@@ -42,14 +42,18 @@ class NewsFragment : Fragment(), SearchView.OnQueryTextListener, SwipeRefreshLay
         _binding = FragmentNewsBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
         binding.mainViewModel = mainViewMode
+        binding.newsViewModel = newsViewModel
 
         setHasOptionsMenu(true)
 
         setupRecyclerView()
+        loadNews()
 
         binding.newsSwipeRefreshLayout.setOnRefreshListener(this)
 
-        loadNews()
+        newsViewModel.readBackOnline.observe(viewLifecycleOwner, {
+            newsViewModel.backOnline = it
+        })
 
         // network listener
         lifecycleScope.launchWhenStarted {

@@ -27,5 +27,9 @@ class Constants {
         const val DEFAULT_CATEGORY = "business"
         const val DEFAULT_PAGE = "1"
         const val DEFAULT_SORT_BY = "popularity"
+
+        // DataStore preferences
+        const val PREFS_NAME = "prefs_news"
+        const val PREFS_BACK_ONLINE = "back_online"
     }
 }

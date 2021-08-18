@@ -8,6 +8,10 @@
         <variable
             name="mainViewModel"
             type="com.norm.news.viewmodels.MainViewModel" />
+
+        <variable
+            name="newsViewModel"
+            type="com.norm.news.viewmodels.NewsViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,20 +24,75 @@
             android:id="@+id/news_swipeRefreshLayout"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <com.todkars.shimmer.ShimmerRecyclerView
-                android:id="@+id/news_recyclerView"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:orientation="vertical"
-                app:shimmer_recycler_item_count="3"
-                app:shimmer_recycler_layout="@layout/placeholder_news_row_layout" />
+                android:layout_height="match_parent">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/network_status_cardView"
+                    networkStatusVisibility="@{newsViewModel.backOnline}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:strokeColor="@color/mediumGray"
+                    app:strokeWidth="1dp">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/network_status_imageView"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginBottom="12dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/ic_wifi_off" />
+
+                        <TextView
+                            android:id="@+id/network_status_textView"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="24dp"
+                            android:text="@string/no_internet_connection"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="@+id/network_status_imageView"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/network_status_imageView"
+                            app:layout_constraintTop_toTopOf="@+id/network_status_imageView" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.todkars.shimmer.ShimmerRecyclerView
+                    android:id="@+id/news_recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/network_status_cardView"
+                    app:shimmer_recycler_item_count="3"
+                    app:shimmer_recycler_layout="@layout/placeholder_news_row_layout" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
@@ -53,6 +112,7 @@
         <ImageView
             android:id="@+id/error_imageView"
             newsApiResponse="@{mainViewModel.newsResponse}"
+            readNewsDatabase="@{mainViewModel.readNews}"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:alpha="0.7"
@@ -67,6 +127,7 @@
         <TextView
             android:id="@+id/error_textView"
             newsApiResponse="@{mainViewModel.newsResponse}"
+            readNewsDatabase="@{mainViewModel.readNews}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
