@@ -15,3 +15,4 @@
 local.properties
 /buildSrc/build
 /buildSrc/.gradle
+secrets.properties

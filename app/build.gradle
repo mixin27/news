@@ -7,6 +7,10 @@ plugins {
     id 'dagger.hilt.android.plugin'
 }
 
+def secretsPropertiesFile = rootProject.file("secrets.properties")
+def secretsProperties = new Properties()
+secretsProperties.load(new FileInputStream(secretsPropertiesFile))
+
 android {
     compileSdk Versions.COMPILE_SDK
 
@@ -16,6 +20,8 @@ android {
         targetSdk Versions.TARGET_SDK
         versionCode Versions.VERSION_CODE
         versionName Versions.VERSION_NAME
+
+        buildConfigField "String", "API_KEY", secretsProperties.getProperty("apiKey")
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
