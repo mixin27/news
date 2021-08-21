@@ -7,6 +7,7 @@ import android.net.NetworkCapabilities
 import androidx.lifecycle.*
 import com.norm.news.data.Repository
 import com.norm.news.data.database.entities.NewsEntity
+import com.norm.news.data.database.entities.SourcesEntity
 import com.norm.news.models.News
 import com.norm.news.models.topheadlines.Sources
 import com.norm.news.util.NetworkResult
@@ -29,10 +30,16 @@ class MainViewModel @Inject constructor(
      * Local database
      */
     val readNews: LiveData<List<NewsEntity>> = repository.local.readNews().asLiveData()
+    val readSources: LiveData<List<SourcesEntity>> = repository.local.readSources().asLiveData()
 
     private fun insertNews(newsEntity: NewsEntity) =
         viewModelScope.launch(Dispatchers.IO) {
             repository.local.insertNews(newsEntity)
+        }
+
+    private fun insertSources(sourcesEntity: SourcesEntity) =
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.local.insertSources(sourcesEntity)
         }
 
     /**
@@ -101,12 +108,22 @@ class MainViewModel @Inject constructor(
             try {
                 val response = repository.remote.getSources(queries)
                 sourcesResponse.value = handleSourcesResponse(response)
+
+                val sources = sourcesResponse.value!!.data
+                if (sources != null) {
+                    offlineCacheSources(sources)
+                }
             } catch (e: Exception) {
                 sourcesResponse.value = NetworkResult.Error("Sources not found.")
             }
         } else {
             sourcesResponse.value = NetworkResult.Error("No Internet Connection.")
         }
+    }
+
+    private fun offlineCacheSources(sources: Sources) {
+        val sourcesEntity = SourcesEntity(sources)
+        insertSources(sourcesEntity)
     }
 
     private fun offlineCacheNews(news: News) {

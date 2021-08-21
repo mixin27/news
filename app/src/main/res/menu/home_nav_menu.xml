@@ -8,7 +8,7 @@
         android:title="@string/sources"
         android:icon="@drawable/ic_source"/>
 
-    <item android:id="@+id/articleSavedFragment"
-        android:title="@string/saved"
-        android:icon="@drawable/ic_bookmarks"/>
+<!--    <item android:id="@+id/articleSavedFragment"-->
+<!--        android:title="@string/saved"-->
+<!--        android:icon="@drawable/ic_bookmarks"/>-->
 </menu>

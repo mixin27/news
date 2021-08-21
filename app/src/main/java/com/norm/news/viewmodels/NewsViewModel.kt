@@ -1,15 +1,14 @@
 package com.norm.news.viewmodels
 
 import android.app.Application
-import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
+import com.norm.news.BuildConfig.API_KEY
 import com.norm.news.R
 import com.norm.news.data.DataStoreRepository
 import com.norm.news.data.FilterTypes
-import com.norm.news.util.Constants.Companion.API_KEY
 import com.norm.news.util.Constants.Companion.DEFAULT_CATEGORY
 import com.norm.news.util.Constants.Companion.DEFAULT_SORT_BY
 import com.norm.news.util.Constants.Companion.QUERY_API_KEY

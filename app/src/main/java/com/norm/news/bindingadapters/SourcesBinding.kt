@@ -5,23 +5,21 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
-import com.google.android.material.card.MaterialCardView
-import com.norm.news.data.database.entities.NewsEntity
-import com.norm.news.models.News
+import com.norm.news.data.database.entities.SourcesEntity
+import com.norm.news.models.topheadlines.Sources
 import com.norm.news.util.NetworkResult
 
 /**
- * Created by Kyaw Zayar Tun on 8/17/21.
+ * Created by Kyaw Zayar Tun on 8/21/21.
  */
-class NewsBinding {
+class SourcesBinding {
     companion object {
-
-        @BindingAdapter("newsApiResponse", "readNewsDatabase", requireAll = true)
+        @BindingAdapter("sourcesApiResponse", "readSourcesDatabase", requireAll = true)
         @JvmStatic
         fun handleReadDataErrors(
             view: View,
-            apiResponse: NetworkResult<News>?,
-            database: List<NewsEntity>?
+            apiResponse: NetworkResult<Sources>?,
+            database: List<SourcesEntity>?
         ) {
             when (view) {
                 is ImageView -> {
@@ -33,15 +31,6 @@ class NewsBinding {
                             && database.isNullOrEmpty()
                     view.text = apiResponse?.message.toString()
                 }
-            }
-        }
-
-        @BindingAdapter("networkStatusVisibility")
-        @JvmStatic
-        fun handleNetworkStatusVisibility(view: MaterialCardView, status: Boolean) {
-            view.visibility = when (status) {
-                true -> View.VISIBLE
-                else -> View.GONE
             }
         }
     }

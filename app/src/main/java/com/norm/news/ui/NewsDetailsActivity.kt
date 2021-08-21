@@ -28,6 +28,7 @@ class NewsDetailsActivity : AppCompatActivity() {
             error(R.drawable.error_placeholder_image)
         }
 
+        binding.newsDetailTitleTextView.text = args.article.title
         binding.newsDetailPublishAtTextView.text =
             args.article.publishedAt.toFormattedDateString("MMM d, yyyy h:mm a")
         binding.newsDetailSourceTextView.text = args.article.source.name

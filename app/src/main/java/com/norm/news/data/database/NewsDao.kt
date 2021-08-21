@@ -5,6 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.norm.news.data.database.entities.NewsEntity
+import com.norm.news.data.database.entities.SourcesEntity
 import kotlinx.coroutines.flow.Flow
 
 /**
@@ -18,4 +19,10 @@ interface NewsDao {
 
     @Query("SELECT * FROM news ORDER BY id ASC")
     fun readNews(): Flow<List<NewsEntity>>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertSources(sourcesEntity: SourcesEntity)
+
+    @Query("SELECT * FROM sources ORDER BY id ASC")
+    fun readSources(): Flow<List<SourcesEntity>>
 }

@@ -31,4 +31,6 @@
     <string name="publishedat">publishedAt</string>
     <string name="apply">Apply</string>
     <string name="read_more">Read more on website</string>
+    <string name="country">Country</string>
+    <string name="en">en</string>
 </resources>
